@@ -1,0 +1,53 @@
+% Ir2 -> IR front
+% Ir1 -> IR side
+
+% Mission 1 & 2
+
+thread = 1
+vel=0.75, edger = 0 : ir1<0.3
+vel=0.75, edger = 0 : dist = 0.5
+vel=0.75, edger = 0 : ir1<0.3
+vel=0.5, edger = 0 : dist = 0.3
+vel = 0: time = 0.5
+
+% Mission 3 // NOT FINISHED
+
+vel=0.5, edger = 0 : ir1<0.2
+vel=0, tr=0.15:turn=180
+vel=0.3, edgel = 0 : ir1<0.2
+
+% Mission 4
+
+thread = 1
+vel=0.5,edgel=0:xl=15
+vel=0.5 , tr=0.15: turn=90
+vel=0.5, edger = 0 : dist = 0.3
+vel=0.5, edger = 0 : lv<10
+vel=0.75:dist=0.75
+vel=0.3, tr=0: turn=-90
+vel=0.75 : lv=1
+vel=0.75:dist=0.1
+vel=0.75 : lv=1
+vel=0.5 , tr=0.15: turn=-90
+vel=0.5, edger = 0 : turn=-75
+vel=0.75, edger = 0 : dist = 0.1
+vel = 0: time = 0.5
+
+Mission 8
+
+thread = 1
+vel=0.75, acc =1, edger = 0 : ir1<0.2
+vel = 0 :  ir2<0.50
+vel = 0 :  ir2>0.50
+vel=1.25, acc = 1,  edger = 0 : dist = 2
+vel=1.25, edger = 0 : ir1<0.3
+vel = 0: time = 0.5
+
+
+
+
+
+
+
+
+
