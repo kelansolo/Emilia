@@ -383,15 +383,13 @@ bool UMission::mission1(int & state)
         state = 10;
       break;
     case 10: // first PART - wait for IR2 then go fwd and turn
-      snprintf(lines[0], MAX_LEN, "vel=0 : ir2 < 0.3");
-      // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
-      snprintf(lines[1], MAX_LEN, "vel=0.5,acc=1:dist=0.6");
-      // stop and create an event when arrived at this line
-      snprintf(lines[2], MAX_LEN, "event=1, vel=0");
-      // add a line, so that the robot is occupied until next snippet has arrived
-      snprintf(lines[3], MAX_LEN, ": dist=1");
+      snprintf(lines[0], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
+      snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : dist = 0.5");
+      snprintf(lines[2], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
+      snprintf(lines[3], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.3");
+      snprintf(lines[3], MAX_LEN, "vel = 0: time = 0.5");
       // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 4);
+      sendAndActivateSnippet(lines, 5);
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
       // tell the operator
