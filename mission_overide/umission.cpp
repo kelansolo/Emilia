@@ -397,7 +397,7 @@ bool UMission::mission1(int & state)
       
       snprintf(lines[10], MAX_LEN, "vel = 0: time = 0.2");
       // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 5);
+      sendAndActivateSnippet(lines, 11);
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
       // tell the operator
