@@ -383,7 +383,7 @@ bool UMission::mission1(int & state)
         state = 10;
       break;
     case 10: // first PART - wait for IR2 then go fwd and turn
-      snprintf(lines[0], MAX_LEN, "vel=0 : ir2 < 0.3");
+      snprintf(lines[0], MAX_LEN, "Yeet");
       // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
       snprintf(lines[1], MAX_LEN, "vel=0.5,acc=1:dist=0.6");
       // stop and create an event when arrived at this line
