@@ -55,7 +55,7 @@ UMission::~UMission()
 
 void UMission::run()
 {
-  while (not active and not th1stop)
+  while (not active and not th1)
     usleep(100000);
 //   printf("UMission::run:  active=%d, th1stop=%d\n", active, th1stop);
   if (not th1stop)
