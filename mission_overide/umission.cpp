@@ -387,7 +387,7 @@ bool UMission::mission1(int & state)
       snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : dist = 0.5");
       snprintf(lines[2], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
       
-      snprintf(lines[3], MAX_LEN, "vel=0.5,edgel=0:xl>15");
+      snprintf(lines[3], MAX_LEN, "vel=0.4,edgel=0:xl>8");
       snprintf(lines[4], MAX_LEN, "vel=0.5 , tr=0.15: turn=90");
       snprintf(lines[5], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.3");
       snprintf(lines[6], MAX_LEN, "vel=0.5, edger = 0 : lv<10");
