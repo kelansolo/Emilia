@@ -77,7 +77,7 @@ vel=0.5, edger = 0 : dist = 0.55
 vel=0.75, edger = 0 : ir1<0.3
 vel=0.5, edger = 0 : dist = 0.5
 vel=0.5, edger = 0 : ir1<0.3
-vel=0.5, edger = 0 : dist = 0.5
+vel=0.5, edgel = 0 : xl>15
 vel=0.5, tr=0.15: turn=90.0
 vel=0.5, edger=0.0: dist=0.3
 vel=0.5, edger=0.0: lv<10
