@@ -93,6 +93,7 @@ vel=0.4 : ir2<0.25
 vel=0.4, tr=0: turn=-90.0
 vel=0.4 : ir2<0.4
 vel=0.4, tr=0: turn=90.0
+vel=0.4:lv=1
 vel=0.0: time=0.5
 
 
