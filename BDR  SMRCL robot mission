@@ -83,7 +83,7 @@ vel=0.5, edger=0.0: lv<10
 vel=0.5: dist=0.75
 vel=0.3, tr=0.0: turn=-90.0
 vel=0.5: lv=1
-vel=0.5, tr=0.15: turn=90.0
+vel=0.5, tr=0.1: turn=90.0
 vel=0.5, edgel=0.0: lv=0
 vel=0.0: time=0.5
 
