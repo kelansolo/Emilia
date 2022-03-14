@@ -103,6 +103,18 @@ vel=1.25, acc = 1,  edger = 0 : dist = 2
 vel=1.25, edger = 0 : ir1<0.3
 vel=0.0: time=0.5
 
+%c13
+vel=0.5, edger=0: xl>16
+vel=0 : time =0.5
+vel=0.5, tr=0 : turn=180
+vel=0.75, edgel=0 : dist = 3.8
+vel=0.5, tr=0 : turn=90
+vel=0.5 : dist=0.4
+vel=0 : ir2<0.3
+vel=0.5, tr=0 : turn=180
+vel=-0.75 : dist=1.2
+
+
 
 
 
