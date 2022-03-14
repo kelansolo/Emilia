@@ -261,10 +261,11 @@ void UMission::runMission()
         }
         switch(mission)
         {
+         /*
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
-            /*
+            
           case 2:
             ended = mission2(missionState);
             break;
@@ -275,6 +276,9 @@ void UMission::runMission()
             ended = mission4(missionState);
             break;
             */
+           case 1:
+              ended = Garage(missionState);
+              break;
           default:
             // no more missions - end everything
             finished = true;
@@ -657,6 +661,64 @@ bool UMission::mission4(int & state)
   return finished;
 }
 
+bool UMission::Garage(int& state)
+{
+    bool finished = false;
+    string velocity = "vel=0.5";
+    
+    switch (state)
+    {
+    case 0: // first PART - wait for IR2 then go fwd and turn
+        snprintf(lines[0], MAX_LEN, velocity + " : dist = 0.5"); //enter the enclosure
+        snprintf(lines[1], MAX_LEN, velocity + " : turn = -90"); //turn right
+        snprintf(lines[2], MAX_LEN, velocity + " : dist = 1.5"); //advance next to the garage (not using the ir bc of the trees)
+
+        snprintf(lines[3], MAX_LEN, velocity + " : ir2>1"); //drive until we are past the front gate of the garage
+        snprintf(lines[4], MAX_LEN, velocity + " : dist > 0.5"); //to go past the garage to turn safely
+        snprintf(lines[5], MAX_LEN, velocity + " : turn = 90"); //turn left
+        snprintf(lines[6], MAX_LEN, velocity + " : dist > 0.5"); //drive until next to garage
+
+        snprintf(lines[7], MAX_LEN, velocity + " : ir2>1"); //drive util we are past the left side of the garage
+        snprintf(lines[8], MAX_LEN, velocity + " : dist = 0.5"); //to go past the garage to turn safely
+        snprintf(lines[9], MAX_LEN, velocity + " : turn = 90"); //turn left
+        snprintf(lines[10], MAX_LEN, velocity + " : dist = 0.5"); //drive until next to garage
+
+        snprintf(lines[11], MAX_LEN, velocity + " : ir2>1"); //drive util we are past the left side of the garage
+        snprintf(lines[12], MAX_LEN, velocity + " : dist = 0.5"); //to go past the garage to turn safely
+        snprintf(lines[13], MAX_LEN, velocity + " : turn = 90"); //turn left
+        snprintf(lines[14], MAX_LEN, velocity + " : dist = 0.5"); //drive next to the garage and push the gate
+
+  
+        // send the lines to the REGBOT
+        sendAndActivateSnippet(lines, 15);
+     
+        state = 1;
+    case 1:
+        snprintf(lines[0], MAX_LEN, velocity + " : turn = 90"); //turn to open the gate
+        snprintf(lines[1], MAX_LEN, velocity + " : distance = 0.25"); //advance to half the enclosure opening
+        snprintf(lines[2], MAX_LEN, velocity + " : turn = 90"); //turn to enter the enclosure
+        snprintf(lines[3], MAX_LEN, velocity + " : distance = 0.5"); //enter the enclosure
+
+        // send the lines to the REGBOT
+        sendAndActivateSnippet(lines, 4);
+        state = 2;
+    case 2:
+        snprintf(lines[0], MAX_LEN, velocity + " : distance = 0.5"); //exit the enclosure
+        snprintf(lines[1], MAX_LEN, velocity + " : turn = -90"); //turn to  the enclosure
+
+        state = 999;
+
+
+
+    case 999:
+    default:
+        printf("mission 4 ended\n");
+        bridge->send("oled 5 mission 4 ended.");
+        finished = true;
+        break;
+    }
+    return finished;
+}
 
 void UMission::openLog()
 {
