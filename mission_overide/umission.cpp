@@ -65,9 +65,9 @@ void UMission::run()
   
 void UMission::printStatus()
 {
-  printf("# ------- Mission ----------\n");
-  printf("# active = %d, finished = %d\n", active, finished);
-  printf("# mission part=%d, in state=%d\n", mission, missionState);
+  printf(" ------- Mission ----------\n");
+  printf(" active = %d, finished = %d\n", active, finished);
+  printf(" mission part=%d, in state=%d\n", mission, missionState);
 }
   
 /**
