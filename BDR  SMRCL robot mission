@@ -114,6 +114,18 @@ vel=0 : ir2<0.3
 vel=0.5, tr=0 : turn=180
 vel=-0.75 : dist=1.2
 
+#Roundabout Mission 11 - doing the actual roundabouting
+Thread 1 does a turn radius smaller than the roundabout, and if it gets too close, turns a bit the other way and starts again
+Thread 2 Keeps track of how far the robot has gotten in degrees and stops the mission when the circle is complete
+thread=1
+    label=1,vel=0.5, tr=0.35: ir1<0.4
+    vel=0.2,tr=0: turn=-10
+    goto=1: event=1
+    vel=0: time=0.1
+thread=2
+   :turn=360
+    event = 0
+
 
 
 
