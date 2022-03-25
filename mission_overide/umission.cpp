@@ -279,6 +279,9 @@ void UMission::runMission()
               ended = Garage(missionState);
               break;
               */
+          case 5:
+            ended = missionCamera(missionState);
+            break;
           default:
             // no more missions - end everything
             finished = true;
@@ -719,6 +722,70 @@ bool UMission::Garage(int& state)
         break;
     }
     return finished;
+}
+
+bool UMission::missionCamera(int & state){
+
+  bool finished = false;
+
+ 
+
+  dir_t dir = updateCameraDir();
+
+  static dir_t prev_dir;
+
+ 
+
+  if (dir != prev_dir){
+
+    is_sent = false;
+
+    prev_dir = dir;
+
+  }
+
+ 
+
+  state = dir;
+
+ 
+
+  switch(dir){
+
+    case FWD:
+
+      if(is_sent == false){
+
+        int line = 0;
+
+        snprintf(lines[line++], MAX_LEN, "vel=0.25");
+
+        sendAndActivateSnippet(lines, line);
+
+        is_sent = true;
+
+      }
+
+    case BAK:
+
+      if(is_sent == false){
+
+        int line = 0;
+
+        snprintf(lines[line++], MAX_LEN, "vel=-0.25");
+
+        sendAndActivateSnippet(lines, line);
+
+        is_sent = true;
+
+      }
+
+  }
+
+ 
+
+  return finished;
+
 }
 
 void UMission::openLog()
