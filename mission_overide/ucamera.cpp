@@ -35,6 +35,9 @@
 #include "ucamera.h"
 #include "ubridge.h"
 #include "utime.h"
+#include <cstdlib>
+
+#include <opencv2/opencv.hpp>
 #include <string>
 
 
@@ -46,6 +49,54 @@ using namespace std;
 ////////////// camera class //////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
+
+typedef enum{
+  FWD = 0,
+  BAK = 1,
+  L = 2,
+  R = 3
+} dir_t;
+
+ 
+
+void initCamera(){
+
+    VideoCapture cap(0); //capture the video from web cam
+
+    if ( !cap.isOpened() )  // if not success, exit program
+
+    {
+
+         cout << "Cannot open the web cam" << endl;
+
+         return -1;
+
+    }
+
+}
+
+ 
+
+dir_t updateCameraDir(){
+
+ 
+
+  // Maybe the video capture works with a /dev/video device
+  Mat imgOriginal;
+
+  bool bSuccess = cap.read(imgOriginal); // read a new frame from video
+
+
+
+ // Make system call
+
+ system("libcamera-still -o cur.jpeg");
+
+ Mat imgOriginal = imread("cur.jpeg");
+
+ 
+
+}
 
 bool UCamera::setupCamera()
 { 
