@@ -130,9 +130,9 @@ int UCamera::updateCameraDir(){
 
     while (true)
     {
-        cv::Mat imgOriginal;
+        //cv::Mat imgOriginal;
 
-        bool bSuccess = cap.read(imgOriginal); // read a new frame from video
+        /*bool bSuccess = cap.read(imgOriginal); // read a new frame from video
 
 
 
@@ -140,7 +140,7 @@ int UCamera::updateCameraDir(){
         {
              cout << "Cannot read a frame from video stream" << endl;
              break;
-        }
+        }*/
 
    cv::Mat imgHSV;
 
