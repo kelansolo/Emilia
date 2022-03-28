@@ -101,7 +101,6 @@ public:
                        0,  
                        0, 
                       -0.14143);
-  //dir_t updateCameraDir(); 
   void initCamera();
 public:
   /** Constructor */
@@ -123,7 +122,8 @@ public:
   void setPan(float pan);
   void setRoll(float roll);
   void setPos(float x, float y, float z);
-  
+  int updateCameraDir(); 
+
 private:
   // pointer to regbot interface
   UBridge * bridge;
