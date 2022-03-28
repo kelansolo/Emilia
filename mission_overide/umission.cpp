@@ -738,7 +738,7 @@ bool UMission::missionCamera(int & state){
     bool is_sent = true;
 
     int dir = cam->updateCameraDir();
-    static dir_t prev_dir;
+    static int prev_dir;
 
     if (dir != prev_dir){
       is_sent = false;
