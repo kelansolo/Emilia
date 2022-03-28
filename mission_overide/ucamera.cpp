@@ -84,9 +84,9 @@ int UCamera::updateCameraDir(){
 
 
     // Maybe the video capture works with a /dev/video device
-    cv::Mat imgOriginal;
+    //cv::Mat imgOriginal;
 
-    bool bSuccess = cap.read(imgOriginal); // read a new frame from video
+    //bool bSuccess = cap.read(imgOriginal); // read a new frame from video
 
 
 
@@ -94,9 +94,9 @@ int UCamera::updateCameraDir(){
 
     system("libcamera-still -o cur.jpeg"); // gets picture from terminal (cur.jpeg is the current picture taken)
 
-    cv::Mat imgOriginal = imread("cur.jpeg");
+    cv::Mat imgOriginal = cv::imread("cur.jpeg");
     
-    cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
+    cv::namedWindow("Control", cv::CV_WINDOW_AUTOSIZE); //create a window called "Control"
 
  int iLowH = 170;
  int iHighH = 179;
@@ -125,7 +125,7 @@ int UCamera::updateCameraDir(){
  cap.read(imgTmp); 
 
  //Create a black image with the size as the camera output
- cv::Mat imgLines = Mat::zeros( imgTmp.size(), CV_8UC3 );
+ cv::Mat imgLines = cv::Mat::zeros( imgTmp.size(), CV_8UC3 );
  
 
     while (true)
@@ -144,11 +144,11 @@ int UCamera::updateCameraDir(){
 
    cv::Mat imgHSV;
 
-  cv::cvtColor(imgOriginal, imgHSV, COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
+  cv::cvtColor(imgOriginal, imgHSV, cv::COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
  
   cv::Mat imgThresholded;
 
-  cv::inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
+  cv::inRange(imgHSV, cv::Scalar(iLowH, iLowS, iLowV), cv::Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
       
   //morphological opening (removes small objects from the foreground)
 
@@ -177,7 +177,7 @@ int UCamera::updateCameraDir(){
    if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
    {
     //Draw a red line from the previous point to the current point
-    line(imgLines, cv::Point(posX, posY), cv::Point(iLastX, iLastY), Scalar(0,0,255), 2);
+    cv::line(imgLines, cv::Point(posX, posY), cv::Point(iLastX, iLastY), cv::Scalar(0,0,255), 2);
    }
 
    iLastX = posX;
@@ -187,9 +187,9 @@ int UCamera::updateCameraDir(){
   imshow("Thresholded Image", imgThresholded); //show the thresholded image
 
   imgOriginal = imgOriginal + imgLines;
-  imshow("Original", imgOriginal); //show the original image
+  cv::imshow("Original", imgOriginal); //show the original image
 
-        if (waitKey(30) == 27) //wait for 'esc' key press for 30ms. If 'esc' key is pressed, break loop
+        if (cv::waitKey(30) == 27) //wait for 'esc' key press for 30ms. If 'esc' key is pressed, break loop
        {
             cout << "esc key is pressed by user" << endl;
             break; 
