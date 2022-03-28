@@ -734,55 +734,34 @@ bool UMission::Garage(int& state)
 /*
 bool UMission::missionCamera(int & state){
 
-  bool finished = false;
+    bool finished = false;
+    dir_t dir = updateCameraDir();
+    static dir_t prev_dir;
 
-  dir_t dir = updateCameraDir();
+    if (dir != prev_dir){
+      is_sent = false;
+      prev_dir = dir;
+    }
 
-  static dir_t prev_dir;
+    state = dir;
+    switch(dir){
+      case FWD:
+        if(is_sent == false){
+          int line = 0;
+          snprintf(lines[line++], MAX_LEN, "vel=0.25");
+          sendAndActivateSnippet(lines, line);
+          is_sent = true;
+        }
 
-  if (dir != prev_dir){
-
-    is_sent = false;
-
-    prev_dir = dir;
-
-  }
-
-  state = dir;
-
-  switch(dir){
-
-    case FWD:
-
-      if(is_sent == false){
-
-        int line = 0;
-
-        snprintf(lines[line++], MAX_LEN, "vel=0.25");
-
-        sendAndActivateSnippet(lines, line);
-
-        is_sent = true;
-
-      }
-
-    case BAK:
-
-      if(is_sent == false){
-
-        int line = 0;
-
-        snprintf(lines[line++], MAX_LEN, "vel=-0.25");
-
-        sendAndActivateSnippet(lines, line);
-
-        is_sent = true;
-
-      }
-
-  }
-  return finished;
-
+      case BAK:
+        if(is_sent == false){
+          int line = 0;
+          snprintf(lines[line++], MAX_LEN, "vel=-0.25");
+          sendAndActivateSnippet(lines, line);
+          is_sent = true;
+        }
+    }
+    return finished;
 }
 */
 
