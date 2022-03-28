@@ -88,13 +88,21 @@ int UCamera::updateCameraDir(){
 
     //bool bSuccess = cap.read(imgOriginal); // read a new frame from video
 
-
+    
 
     // Make system call
 
     system("libcamera-still -o cur.jpeg"); // gets picture from terminal (cur.jpeg is the current picture taken)
 
     cv::Mat imgOriginal = cv::imread("cur.jpeg");
+    cv::imshow("Original", imgOriginal); //show the original image
+
+        if (cv::waitKey(30) == 27) //wait for 'esc' key press for 30ms. If 'esc' key is pressed, break loop
+       {
+            cout << "esc key is pressed by user" << endl;
+            break; 
+       }
+  /*
     
     cv::namedWindow("Control"); //create a window called "Control"
 
@@ -140,7 +148,7 @@ int UCamera::updateCameraDir(){
         {
              cout << "Cannot read a frame from video stream" << endl;
              break;
-        }*/
+        }/*
 
    cv::Mat imgHSV;
 
@@ -183,7 +191,7 @@ int UCamera::updateCameraDir(){
 
    iLastX = posX;
    iLastY = posY;
-   */
+   
   }
   
   imshow("Thresholded Image", imgThresholded); //show the thresholded image
@@ -196,7 +204,7 @@ int UCamera::updateCameraDir(){
             cout << "esc key is pressed by user" << endl;
             break; 
        }
-    }
+    }*/
 
    return 0;
 
