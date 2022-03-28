@@ -27,6 +27,12 @@
 #include "utime.h"
 #include "ulibpose2pose.h"
 
+typedef enum{
+  FWD = 0,
+  BAK = 1,
+  L = 2,
+  R = 3
+} dir_t;
 
 UMission::UMission(UBridge * regbot, UCamera * camera)
 {
