@@ -284,10 +284,11 @@ void UMission::runMission()
            case 1:
               ended = Garage(missionState);
               break;
-              */
+              
           case 5:
             ended = missionCamera(missionState);
             break;
+            */
           default:
             // no more missions - end everything
             finished = true;
@@ -730,17 +731,14 @@ bool UMission::Garage(int& state)
     return finished;
 }
 
+/*
 bool UMission::missionCamera(int & state){
 
   bool finished = false;
 
- 
-
   dir_t dir = updateCameraDir();
 
   static dir_t prev_dir;
-
- 
 
   if (dir != prev_dir){
 
@@ -750,11 +748,7 @@ bool UMission::missionCamera(int & state){
 
   }
 
- 
-
   state = dir;
-
- 
 
   switch(dir){
 
@@ -787,12 +781,10 @@ bool UMission::missionCamera(int & state){
       }
 
   }
-
- 
-
   return finished;
 
 }
+*/
 
 void UMission::openLog()
 {
