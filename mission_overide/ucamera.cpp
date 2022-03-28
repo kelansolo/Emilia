@@ -84,7 +84,7 @@ int UCamera::updateCameraDir(){
 
 
     // Maybe the video capture works with a /dev/video device
-    Mat imgOriginal;
+    cv::Mat imgOriginal;
 
     bool bSuccess = cap.read(imgOriginal); // read a new frame from video
 
@@ -94,9 +94,9 @@ int UCamera::updateCameraDir(){
 
     system("libcamera-still -o cur.jpeg"); // gets picture from terminal (cur.jpeg is the current picture taken)
 
-    Mat imgOriginal = imread("cur.jpeg");
+    cv::Mat imgOriginal = imread("cur.jpeg");
     
-    namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
+    cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
 
  int iLowH = 170;
  int iHighH = 179;
@@ -108,29 +108,29 @@ int UCamera::updateCameraDir(){
  int iHighV = 255;
 
  //Create trackbars in "Control" window
- createTrackbar("LowH", "Control", &iLowH, 179); //Hue (0 - 179)
- createTrackbar("HighH", "Control", &iHighH, 179);
+ cv::createTrackbar("LowH", "Control", &iLowH, 179); //Hue (0 - 179)
+ cv::createTrackbar("HighH", "Control", &iHighH, 179);
 
- createTrackbar("LowS", "Control", &iLowS, 255); //Saturation (0 - 255)
- createTrackbar("HighS", "Control", &iHighS, 255);
+ cv::createTrackbar("LowS", "Control", &iLowS, 255); //Saturation (0 - 255)
+ cv::createTrackbar("HighS", "Control", &iHighS, 255);
 
- createTrackbar("LowV", "Control", &iLowV, 255);//Value (0 - 255)
- createTrackbar("HighV", "Control", &iHighV, 255);
+ cv::createTrackbar("LowV", "Control", &iLowV, 255);//Value (0 - 255)
+ cv::createTrackbar("HighV", "Control", &iHighV, 255);
 
  int iLastX = -1; 
  int iLastY = -1;
 
  //Capture a temporary image from the camera
- Mat imgTmp;
+ cv::Mat imgTmp;
  cap.read(imgTmp); 
 
  //Create a black image with the size as the camera output
- Mat imgLines = Mat::zeros( imgTmp.size(), CV_8UC3 );;
+ cv::Mat imgLines = Mat::zeros( imgTmp.size(), CV_8UC3 );
  
 
     while (true)
     {
-        Mat imgOriginal;
+        cv::Mat imgOriginal;
 
         bool bSuccess = cap.read(imgOriginal); // read a new frame from video
 
@@ -142,26 +142,26 @@ int UCamera::updateCameraDir(){
              break;
         }
 
-   Mat imgHSV;
+   cv::Mat imgHSV;
 
-  cvtColor(imgOriginal, imgHSV, COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
+  cv::cvtColor(imgOriginal, imgHSV, COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
  
-  Mat imgThresholded;
+  cv::Mat imgThresholded;
 
-  inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
+  cv::inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
       
   //morphological opening (removes small objects from the foreground)
 
  
 
-  erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
-  dilate( imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) ); 
+  cv::erode(imgThresholded, imgThresholded, getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5)) );
+  cv::dilate( imgThresholded, imgThresholded, getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5)) ); 
  //morphological closing (removes small holes from the foreground)
-  dilate( imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) ); 
-  erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
+  cv::dilate( imgThresholded, imgThresholded, getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5)) ); 
+  cv::erode(imgThresholded, imgThresholded, getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5)) );
 
   //Calculate the moments of the thresholded image
-  Moments oMoments = moments(imgThresholded);
+  cv::Moments oMoments = moments(imgThresholded);
 
   double dM01 = oMoments.m01;
   double dM10 = oMoments.m10;
@@ -177,7 +177,7 @@ int UCamera::updateCameraDir(){
    if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
    {
     //Draw a red line from the previous point to the current point
-    line(imgLines, Point(posX, posY), Point(iLastX, iLastY), Scalar(0,0,255), 2);
+    line(imgLines, cv::Point(posX, posY), cv::Point(iLastX, iLastY), Scalar(0,0,255), 2);
    }
 
    iLastX = posX;
