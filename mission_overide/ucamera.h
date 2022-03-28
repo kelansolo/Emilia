@@ -101,8 +101,8 @@ public:
                        0,  
                        0, 
                       -0.14143);
-  dir_t updateCameraDir(); 
-  void initCamera
+  //dir_t updateCameraDir(); 
+  void initCamera();
 public:
   /** Constructor */
   UCamera(UBridge * reg);
