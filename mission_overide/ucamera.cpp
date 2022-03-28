@@ -96,7 +96,7 @@ int UCamera::updateCameraDir(){
 
     cv::Mat imgOriginal = cv::imread("cur.jpeg");
     
-    cv::namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
+    cv::namedWindow("Control"); //create a window called "Control"
 
  int iLowH = 170;
  int iHighH = 179;
