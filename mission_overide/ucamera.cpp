@@ -80,7 +80,7 @@ void UCamera::initCamera(){
 
 int UCamera::updateCameraDir(){
 
-    cv::VideoCapture cap(0); //capture the video from web cam
+    //cv::VideoCapture cap(0); //capture the video from web cam
 
 
     // Maybe the video capture works with a /dev/video device
@@ -121,11 +121,11 @@ int UCamera::updateCameraDir(){
  int iLastY = -1;
 
  //Capture a temporary image from the camera
- cv::Mat imgTmp;
- cap.read(imgTmp); 
+ //cv::Mat imgTmp;
+ //cap.read(imgTmp); 
 
  //Create a black image with the size as the camera output
- cv::Mat imgLines = cv::Mat::zeros( imgTmp.size(), CV_8UC3 );
+ cv::Mat imgLines = cv::Mat::zeros( imgOriginal.size(), CV_8UC3 );
  
 
     while (true)
@@ -332,7 +332,7 @@ UCamera::UCamera(UBridge * reg)
   arUcos = new ArUcoVals(this);
   cameraOpen = setupCamera();
   // initialize coordinate conversion
-  makeCamToRobotTransformation();
+  //makeCamToRobotTransformation();
 //   if (cameraOpen)
 //   { // start camera thread
 //     th1 = new thread(runObj, this);
