@@ -59,7 +59,7 @@ typedef enum{
 
  
 
-void initCamera(){
+void UCamera::initCamera(){
 
     VideoCapture cap(0); //capture the video from web cam
 
@@ -77,7 +77,7 @@ void initCamera(){
 
  
 
-dir_t updateCameraDir(){
+dir_t UCamera::updateCameraDir(){
 
  
 
