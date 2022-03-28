@@ -737,7 +737,7 @@ bool UMission::missionCamera(int & state){
     bool finished = false;
     bool is_sent = true;
     UCamera direction;
-    dir_t dir = direction.updateCameraDir();
+    int dir = direction.updateCameraDir();
     static dir_t prev_dir;
 
     if (dir != prev_dir){
@@ -747,7 +747,7 @@ bool UMission::missionCamera(int & state){
 
     state = dir;
     switch(dir){
-      case FWD:
+      case 0:
         if(is_sent == false){
           int line = 0;
           snprintf(lines[line++], MAX_LEN, "vel=0.25");
@@ -755,7 +755,7 @@ bool UMission::missionCamera(int & state){
           is_sent = true;
         }
 
-      case BAK:
+      case 1:
         if(is_sent == false){
           int line = 0;
           snprintf(lines[line++], MAX_LEN, "vel=-0.25");
