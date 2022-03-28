@@ -173,7 +173,8 @@ int UCamera::updateCameraDir(){
    //calculate the position of the ball
    int posX = dM10 / dArea;
    int posY = dM01 / dArea;        
-        
+    cout << posX << posY << endl;
+   /*
    if (iLastX >= 0 && iLastY >= 0 && posX >= 0 && posY >= 0)
    {
     //Draw a red line from the previous point to the current point
@@ -183,10 +184,10 @@ int UCamera::updateCameraDir(){
    iLastX = posX;
    iLastY = posY;
   }
-
+  */
   imshow("Thresholded Image", imgThresholded); //show the thresholded image
 
-  imgOriginal = imgOriginal + imgLines;
+  imgOriginal = imgOriginal; // + imgLines;
   cv::imshow("Original", imgOriginal); //show the original image
 
         if (cv::waitKey(30) == 27) //wait for 'esc' key press for 30ms. If 'esc' key is pressed, break loop
