@@ -92,7 +92,7 @@ int UCamera::updateCameraDir(){
 
     // Make system call
 
-    system("libcamera-still -o cur.jpeg"); // gets picture from terminal (cur.jpeg is the current picture taken)
+    system("libcamera-hello -o cur.jpeg"); // gets picture from terminal (cur.jpeg is the current picture taken)
 
     cv::Mat imgOriginal = cv::imread("cur.jpeg");
     
