@@ -183,8 +183,9 @@ int UCamera::updateCameraDir(){
 
    iLastX = posX;
    iLastY = posY;
+   */
   }
-  */
+  
   imshow("Thresholded Image", imgThresholded); //show the thresholded image
 
   imgOriginal = imgOriginal; // + imgLines;
