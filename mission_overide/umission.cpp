@@ -267,11 +267,11 @@ void UMission::runMission()
         }
         switch(mission)
         {
-         
+         /*
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
-            /*
+            
           case 2:
             ended = mission2(missionState);
             break;
@@ -284,11 +284,11 @@ void UMission::runMission()
            case 1:
               ended = Garage(missionState);
               break;
-              
-          case 5:
+              */
+          case 1:
             ended = missionCamera(missionState);
             break;
-            */
+            
           default:
             // no more missions - end everything
             finished = true;
@@ -731,7 +731,7 @@ bool UMission::Garage(int& state)
     return finished;
 }
 
-/*
+
 bool UMission::missionCamera(int & state){
 
     bool finished = false;
@@ -763,7 +763,7 @@ bool UMission::missionCamera(int & state){
     }
     return finished;
 }
-*/
+
 
 void UMission::openLog()
 {
