@@ -736,8 +736,8 @@ bool UMission::missionCamera(int & state){
 
     bool finished = false;
     bool is_sent = true;
-    int direction = UCamera::updateCameraDir();
-    dir_t dir = direction;
+    UCamera direction;
+    dir_t dir = direction.updateCameraDir();
     static dir_t prev_dir;
 
     if (dir != prev_dir){
