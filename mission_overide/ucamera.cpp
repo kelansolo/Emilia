@@ -253,11 +253,11 @@ bool UCamera::setupCamera()
     w = 640;
     h = 480;
   //pixelFormat = V4L2_PIX_FMT_YUYV;
-  pixelFormat = V4L2_PIX_FMT_SBGGR10;  // (BG10) Bayer coded 10bit per colour plane
+  //pixelFormat = V4L2_PIX_FMT_SBGGR10;  // (BG10) Bayer coded 10bit per colour plane
   //pixelFormat = V4L2_PIX_FMT_SBGGR10P;
   //pixelFormat = V4L2_PIX_FMT_SBGGR8;
   // pixelFormat = V4L2_PIX_FMT_RGB24;
-  force_format = 1; // set w,h, ...
+  //force_format = 1; // set w,h, ...
   try
   { // try open camera with these settings
     open_device();
