@@ -61,7 +61,7 @@ typedef enum{
 
 void UCamera::initCamera(){
 
-    VideoCapture cap(0); //capture the video from web cam
+    cv::VideoCapture cap(0); //capture the video from web cam
 
     if ( !cap.isOpened() )  // if not success, exit program
 
@@ -69,13 +69,13 @@ void UCamera::initCamera(){
 
          cout << "Cannot open the web cam" << endl;
 
-         return -1;
+         return;
 
     }
 
 }
 
- 
+ /*
 
 dir_t UCamera::updateCameraDir(){
 
@@ -97,7 +97,7 @@ dir_t UCamera::updateCameraDir(){
  
 
 }
-
+*/
 bool UCamera::setupCamera()
 { 
   bool isOpen = false;
