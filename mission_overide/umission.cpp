@@ -735,7 +735,7 @@ bool UMission::Garage(int& state)
 bool UMission::missionCamera(int & state){
 
     bool finished = false;
-    dir_t dir = updateCameraDir();
+    dir_t dir = UCamera::updateCameraDir();
     static dir_t prev_dir;
 
     if (dir != prev_dir){
