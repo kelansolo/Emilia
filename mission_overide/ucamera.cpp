@@ -247,17 +247,17 @@ bool UCamera::setupCamera()
   //   w = 1920;
   //   h = 1080;
   //
-  w = 1296;
-  h = 972;
+  //w = 1296;
+  //h = 972;
   //
-  //   w = 640;
-  //   h = 480;
+    w = 640;
+    h = 480;
   //pixelFormat = V4L2_PIX_FMT_YUYV;
   pixelFormat = V4L2_PIX_FMT_SBGGR10;  // (BG10) Bayer coded 10bit per colour plane
   //pixelFormat = V4L2_PIX_FMT_SBGGR10P;
   //pixelFormat = V4L2_PIX_FMT_SBGGR8;
   // pixelFormat = V4L2_PIX_FMT_RGB24;
-  //force_format = 1; // set w,h, ...
+  force_format = 1; // set w,h, ...
   try
   { // try open camera with these settings
     open_device();
@@ -269,9 +269,9 @@ bool UCamera::setupCamera()
       isOpen = true;
       // cam settings
       listCapability();
-      setWhiteBalance(true); // auto
-      setGain(0 /* 0=auto*/);
-      setExposure(1010); // 4--1183 (step 1)
+      //setWhiteBalance(true); // auto
+      //setGain(0 /* 0=auto*/);
+      //setExposure(1010); // 4--1183 (step 1)
       // setBrightness(1000);
       // setContrast(1000);
     }
