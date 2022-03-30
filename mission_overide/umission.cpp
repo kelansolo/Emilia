@@ -269,11 +269,9 @@ void UMission::runMission()
         {
          
           case 1: // running auto mission
-            printf("# 8");
             ended = mission1(missionState);
             break;
           case 2:
-            printf("# 7");
             ended = mission2(missionState);
             break;/*
           case 3:
@@ -388,19 +386,16 @@ bool UMission::mission1(int & state)
     case 0:
       // tell the operatior what to do
       printf("# press green to start.\n");
-      printf("# 9");
 //       system("espeak \"press green to start\" -ven+f4 -s130 -a5 2>/dev/null &");
       play.say("Press green to start", 90);
       bridge->send("oled 5 press green to start");
       state++;
       break;
     case 1:
-      printf("# 10");
       if (bridge->joy->button[BUTTON_GREEN])
         state = 10;
       break;
     case 10:
-      printf("# 11");
       snprintf(lines[0], MAX_LEN, "vel=1 : dist = 3");
       snprintf(lines[1], MAX_LEN, "event=1, vel=0");
       snprintf(lines[2], MAX_LEN, ": dist=1");
@@ -430,17 +425,15 @@ bool UMission::mission1(int & state)
       //play.say("Code snippet 1.", 90);
       bridge->send("oled 5 code snippet 1");
       
-      printf("# 1");
-      //
+      /*
       // play as we go
       
       play.setFile("../The_thing_goes_Bassim.mp3");
       play.setVolume(5); // % (0..100)
       play.start();
-      // go to wait for finished
+      // go to wait for finished*/
       state = 11;
       featureCnt = 0;
-      printf("# 6");
       break;
     case 11:
       printf("# 2");
@@ -448,7 +441,6 @@ bool UMission::mission1(int & state)
       if (bridge->event->isEventSet(1))
       { // finished first drive
         state = 999;
-        printf("# 3");
         //play.stopPlaying();
       }
       break;
@@ -681,34 +673,67 @@ bool UMission::mission2(int & state)
 
 bool UMission::mission2(int & state)
 {
-  printf("# 5");
   bool finished = false;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
   switch (state)
   {
     case 0:
-      // tell the operatior what to do
-      printf("# ouiiiii.\n");
-      
-      snprintf(lines[0], MAX_LEN, "vel=0.4: dist = 0.3");
-      snprintf(lines[1], MAX_LEN, "vel=1: dist = 0.3");
+      //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
+      snprintf(lines[0], MAX_LEN, "vel=0.5 : dist = 3");
+      snprintf(lines[1], MAX_LEN, "event=1, vel=0");
+      snprintf(lines[2], MAX_LEN, ": dist=1");
+      sendAndActivateSnippet(lines, 3);
+      /*
+      snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
+      snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
+      snprintf(lines[2], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
+      snprintf(lines[3], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.3");
+      snprintf(lines[4], MAX_LEN, "vel=0.5, edgel = 0 : xl>15");
+      snprintf(lines[5], MAX_LEN, "vel=0.5, tr=0.15: turn=90.0");
+      snprintf(lines[6], MAX_LEN, "vel=0.5, edger=0.0: dist=0.3");
+      snprintf(lines[7], MAX_LEN, "vel=0.5, edger=0.0: lv<10");
+      snprintf(lines[8], MAX_LEN, "vel=0.5: dist=0.75");
+      snprintf(lines[9], MAX_LEN, "vel=0.3, tr=0.0: turn=-90.0");
+      snprintf(lines[10], MAX_LEN, "vel=0.5: lv=1");
+      snprintf(lines[11], MAX_LEN, "vel=0.5, tr=0.1: turn=90.0");
+      snprintf(lines[12], MAX_LEN, "vel=0.5, edgel=0.0: lv=0");
       
       // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 2);
-    
-      state = 999;
+      sendAndActivateSnippet(lines, 13);*/
+      // make sure event 1 is cleared
+      bridge->event->isEventSet(1);
+      // tell the operator
+      printf("# case=%d sent mission snippet 1\n", state);
+//       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
+      //play.say("Code snippet 1.", 90);
+      bridge->send("oled 5 code snippet 1");
+      
+      /*
+      // play as we go
+      
+      play.setFile("../The_thing_goes_Bassim.mp3");
+      play.setVolume(5); // % (0..100)
+      play.start();
+      // go to wait for finished*/
+      state = 11;
       featureCnt = 0;
       break;
-     
+    case 11:
+      // wait for event 1 (send when finished driving first part)
+      if (bridge->event->isEventSet(1))
+      { // finished first drive
+        state = 999;
+        //play.stopPlaying();
+      }
+      break;
     case 999:
     default:
-        printf("mission 4 ended\n");
-        bridge->send("oled 5 mission 4 ended.");
-        finished = true;
-        break;
+      printf("mission 2 ended \n");
+      bridge->send("oled 5 \"mission 2 ended.\"");
+      finished = true;
+      break;
   }
-  // printf("# mission1 return (state=%d, finished=%d, )\n", state, finished);
   return finished;
 }
 
