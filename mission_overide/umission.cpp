@@ -304,7 +304,7 @@ void UMission::runMission()
         { // update small O-led display on robot - when there is a change
           UTime t;
           t.now();
-          snprintf(s, MSL, "oled 4 mission %d state %d\n", mission, missionState);
+          snprintf(s, MSL, "oled 26 mission %d state %d\n", mission, missionState);
           bridge->send(s);
           if (logMission != NULL)
           {
@@ -453,6 +453,7 @@ bool UMission::mission1(int & state)
  *              therefore defined as reference with the '&'.
  *              State will be 0 at first call.
  * \returns true, when finished. */
+/*
 bool UMission::mission2(int & state)
 {
   bool finished = false;
@@ -463,11 +464,11 @@ bool UMission::mission2(int & state)
     case 0:
       // tell the operatior what to do
       printf("# started mission 2.\n");
-      /*
+      
 //       system("espeak \"looking for ArUco\" -ven+f4 -s130 -a5 2>/dev/null &"); 
       play.say("Looking for ArUco.", 90);
       bridge->send("oled 5 looking 4 ArUco");
-      state=11;*/
+      state=11;
       state=10;
       break;
     case 10:
@@ -500,7 +501,7 @@ bool UMission::mission2(int & state)
         //play.stopPlaying();
       }
       break;
-      /*
+      
     case 11:
       
       // wait for finished driving first part)
@@ -648,7 +649,7 @@ bool UMission::mission2(int & state)
         // no, stop
         state = 999;
       }
-      break;*/
+      break;
     case 999:
     default:
       printf("mission 1 ended \n");
@@ -656,6 +657,39 @@ bool UMission::mission2(int & state)
       finished = true;
       //play.stopPlaying();
       break;
+  }
+  // printf("# mission1 return (state=%d, finished=%d, )\n", state, finished);
+  return finished;
+}
+*/
+
+bool UMission::mission2(int & state)
+{
+  bool finished = false;
+  // First commands to send to robobot in given mission
+  // (robot sends event 1 after driving 1 meter)):
+  switch (state)
+  {
+    case 0:
+      // tell the operatior what to do
+      printf("# ouiiiii.\n");
+      
+      snprintf(lines[0], MAX_LEN, "vel=0.4: dist = 0.3");
+      snprintf(lines[1], MAX_LEN, "vel=1: dist = 0.3");
+      
+      // send the 4 lines to the REGBOT
+      sendAndActivateSnippet(lines, 2);
+    
+      state = 999;
+      featureCnt = 0;
+      break;
+     
+    case 999:
+    default:
+        printf("mission 4 ended\n");
+        bridge->send("oled 5 mission 4 ended.");
+        finished = true;
+        break;
   }
   // printf("# mission1 return (state=%d, finished=%d, )\n", state, finished);
   return finished;
