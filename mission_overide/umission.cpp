@@ -269,6 +269,7 @@ void UMission::runMission()
         {
          
           case 1: // running auto mission
+            printf("# 8");
             ended = mission1(missionState);
             break;
           case 2:
@@ -387,16 +388,19 @@ bool UMission::mission1(int & state)
     case 0:
       // tell the operatior what to do
       printf("# press green to start.\n");
+      printf("# 9");
 //       system("espeak \"press green to start\" -ven+f4 -s130 -a5 2>/dev/null &");
       play.say("Press green to start", 90);
       bridge->send("oled 5 press green to start");
       state++;
       break;
     case 1:
+      printf("# 10");
       if (bridge->joy->button[BUTTON_GREEN])
         state = 10;
       break;
     case 10:
+      printf("# 11");
       snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
       sendAndActivateSnippet(lines, 1);
       /*
