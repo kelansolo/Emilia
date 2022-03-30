@@ -524,7 +524,7 @@ bool UMission::mission5(int & state)
       {
         printf("# 2");
         
-      float stair_width = 20; // cm
+      float stair_width = 0.2; // cm
       int arm_wait = 10; //s
       int n_stairs = 5;
       int arm_speed = 645;
@@ -534,7 +534,7 @@ bool UMission::mission5(int & state)
 
       for (size_t i = 0; i < n_stairs; i++) {
         if (i==1) {
-          stair_width = 10;
+          stair_width = 0.1;
         }
         printf("# for");
         int line = 0;
