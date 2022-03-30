@@ -451,11 +451,6 @@ bool UMission::mission1(int & state)
       }
       break;
     case 999:
-      printf("# 4");
-      printf("mission 1 ended \n");
-      bridge->send("oled 5 \"mission 1 ended.\"");
-      finished = true;
-      break;
     default:
       printf("mission 1 ended \n");
       bridge->send("oled 5 \"mission 1 ended.\"");
