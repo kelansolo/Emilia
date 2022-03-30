@@ -421,27 +421,21 @@ bool UMission::mission1(int & state)
       bridge->event->isEventSet(1);
       // tell the operator
       printf("# case=%d sent mission snippet 1\n", state);
-//       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
-      //play.say("Code snippet 1.", 90);
+
       bridge->send("oled 5 code snippet 1");
       
       /*
       // play as we go
-      
-      play.setFile("../The_thing_goes_Bassim.mp3");
-      play.setVolume(5); // % (0..100)
-      play.start();
+     
       // go to wait for finished*/
       state = 11;
       featureCnt = 0;
       break;
     case 11:
-      printf("# 2");
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
         state = 999;
-        //play.stopPlaying();
       }
       break;
     case 999:
@@ -680,42 +674,33 @@ bool UMission::mission2(int & state)
   {
     case 0:
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
-      snprintf(lines[0], MAX_LEN, "vel=0.5 : dist = 3");
-      snprintf(lines[1], MAX_LEN, "event=1, vel=0");
-      snprintf(lines[2], MAX_LEN, ": dist=1");
-      sendAndActivateSnippet(lines, 3);
-      /*
-      snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
-      snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
-      snprintf(lines[2], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
-      snprintf(lines[3], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.3");
-      snprintf(lines[4], MAX_LEN, "vel=0.5, edgel = 0 : xl>15");
-      snprintf(lines[5], MAX_LEN, "vel=0.5, tr=0.15: turn=90.0");
-      snprintf(lines[6], MAX_LEN, "vel=0.5, edger=0.0: dist=0.3");
-      snprintf(lines[7], MAX_LEN, "vel=0.5, edger=0.0: lv<10");
-      snprintf(lines[8], MAX_LEN, "vel=0.5: dist=0.75");
-      snprintf(lines[9], MAX_LEN, "vel=0.3, tr=0.0: turn=-90.0");
-      snprintf(lines[10], MAX_LEN, "vel=0.5: lv=1");
-      snprintf(lines[11], MAX_LEN, "vel=0.5, tr=0.1: turn=90.0");
-      snprintf(lines[12], MAX_LEN, "vel=0.5, edgel=0.0: lv=0");
+      snprintf(lines[0], MAX_LEN, "servo=3, pservo=-50, vservo=0");
+      snprintf(lines[1], MAX_LEN, "vel=0.4 : dist = 0.5");
+      snprintf(lines[2], MAX_LEN, "vel=0.4, tr=0: turn=-90.0");
+      snprintf(lines[3], MAX_LEN, "vel=0.4 : dist = 0.4");
+      snprintf(lines[4], MAX_LEN, "vel=0.4, tr=0: turn=90.0");
+      snprintf(lines[5], MAX_LEN, "vel=0.4 : ir2<0.1");
+      snprintf(lines[6], MAX_LEN, "servo=3, pservo=800, vservo=0");
+      snprintf(lines[7], MAX_LEN, "vel=0.4 : dist = 0.1");
+      snprintf(lines[8], MAX_LEN, "vel=0.4, tr=0: turn=-90.0");
+      snprintf(lines[9], MAX_LEN, "servo=3, pservo=-190, vservo=0:time=1");
+      snprintf(lines[10], MAX_LEN, "vel=0.4 : ir1>1");
+      snprintf(lines[11], MAX_LEN, "vel=0.4 : dist = 0.1");
+      snprintf(lines[12], MAX_LEN, "vel=0.4 : ir1<1");
+      snprintf(lines[13], MAX_LEN, "vel=0.4, tr=0: turn=90.0");
+      snprintf(lines[14], MAX_LEN, "vel=0.4: lv=1");
       
-      // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 13);*/
+      snprintf(lines[15], MAX_LEN, "event=1, vel=0");
+      snprintf(lines[16], MAX_LEN, ": dist=1");
+      sendAndActivateSnippet(lines, 17);
+      
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
       // tell the operator
       printf("# case=%d sent mission snippet 1\n", state);
-//       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
-      //play.say("Code snippet 1.", 90);
+
       bridge->send("oled 5 code snippet 1");
-      
-      /*
-      // play as we go
-      
-      play.setFile("../The_thing_goes_Bassim.mp3");
-      play.setVolume(5); // % (0..100)
-      play.start();
-      // go to wait for finished*/
+     
       state = 11;
       featureCnt = 0;
       break;
@@ -724,7 +709,6 @@ bool UMission::mission2(int & state)
       if (bridge->event->isEventSet(1))
       { // finished first drive
         state = 999;
-        //play.stopPlaying();
       }
       break;
     case 999:
