@@ -673,7 +673,7 @@ bool UMission::mission2(int & state)
   {
     case 0:
       // tell the operatior what to do
-      snprintf("# ouiiiii.\n");
+      printf("# ouiiiii.\n");
       
       snprintf(lines[0], MAX_LEN, "vel=0.4: dist = 0.3");
       snprintf(lines[1], MAX_LEN, "vel=1: dist = 0.3");
