@@ -536,6 +536,7 @@ bool UMission::mission5(int & state)
         if (i==1) {
           stair_width = 10;
         }
+        printf("# for");
         int line = 0;
         snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %.2f",stair_width);
         snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
@@ -548,6 +549,7 @@ bool UMission::mission5(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt<0.15,dist=0.3");
         snprintf(lines[line++], MAX_LEN, "vel=-0.2:dist=%.2f", stair_width);
         snprintf(lines[line++], MAX_LEN, "vel=0:time = 2");
+        snprintf(lines[line++], MAX_LEN, ": dist=1");
         sendAndActivateSnippet(lines, line);
       }
         
@@ -572,6 +574,7 @@ bool UMission::mission5(int & state)
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
+        printf("# FIN");
         state = 999;
       }
       break;
