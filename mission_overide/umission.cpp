@@ -401,7 +401,7 @@ bool UMission::mission1(int & state)
       break;
     case 10:
       printf("# 11");
-      snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
+      snprintf(lines[0], MAX_LEN, "vel=1 : dist = 3");
       sendAndActivateSnippet(lines, 1);
       /*
       snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
@@ -419,9 +419,9 @@ bool UMission::mission1(int & state)
       snprintf(lines[12], MAX_LEN, "vel=0.5, edgel=0.0: lv=0");
       
       // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 13);
+      sendAndActivateSnippet(lines, 13);*/
       // make sure event 1 is cleared
-      bridge->event->isEventSet(1);*/
+      bridge->event->isEventSet(1);
       // tell the operator
       printf("# case=%d sent mission snippet 1\n", state);
 //       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
