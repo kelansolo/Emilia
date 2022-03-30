@@ -275,7 +275,7 @@ void UMission::runMission()
             ended = mission2(missionState);
             break;*/
           case 1:
-            ended = missionStairs(missionState);
+            ended = mission5(missionState);
             break; 
             /*
           case 3:
@@ -511,7 +511,7 @@ bool UMission::mission2(int & state)
 }
 
 
-bool UMission::missionStairs(int & state)
+bool UMission::mission5(int & state)
 {
   bool finished = false;
   // First commands to send to robobot in given mission
