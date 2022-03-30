@@ -511,7 +511,7 @@ bool UMission::mission2(int & state)
 }
 
 
-/*bool UMission::mission5(int & state)
+bool UMission::mission5(int & state)
 {
   bool finished = false;
   // First commands to send to robobot in given mission
@@ -565,9 +565,9 @@ bool UMission::mission2(int & state)
       break;
   }
   return finished;
-}*/
+}
 
-bool UMission::mission5(int & state)
+/*bool UMission::mission5(int & state)
 {
   bool finished = false;
   // First commands to send to robobot in given mission
@@ -629,7 +629,7 @@ bool UMission::mission5(int & state)
       break;
   }
   return finished;
-}
+}*/
 
 
 
