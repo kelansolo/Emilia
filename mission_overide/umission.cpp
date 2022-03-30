@@ -417,13 +417,14 @@ bool UMission::mission1(int & state)
       // tell the operator
       printf("# case=%d sent mission snippet 1\n", state);
 //       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
-      play.say("Code snippet 1.", 90);
+      //play.say("Code snippet 1.", 90);
       bridge->send("oled 5 code snippet 1");
       //
       // play as we go
+      /*
       play.setFile("../The_thing_goes_Bassim.mp3");
       play.setVolume(5); // % (0..100)
-      play.start();
+      play.start();*/
       // go to wait for finished
       state = 11;
       featureCnt = 0;
@@ -672,7 +673,7 @@ bool UMission::mission2(int & state)
   {
     case 0:
       // tell the operatior what to do
-      printf("# ouiiiii.\n");
+      snprintf("# ouiiiii.\n");
       
       snprintf(lines[0], MAX_LEN, "vel=0.4: dist = 0.3");
       snprintf(lines[1], MAX_LEN, "vel=1: dist = 0.3");
