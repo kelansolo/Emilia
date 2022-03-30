@@ -264,6 +264,7 @@ void UMission::runMission()
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
+            /*
           case 2:
             ended = mission2(missionState);
             break;
@@ -272,7 +273,7 @@ void UMission::runMission()
             break;
           case 4:
             ended = mission4(missionState);
-            break;
+            break;*/
           default:
             // no more missions - end everything
             finished = true;
@@ -381,15 +382,22 @@ bool UMission::mission1(int & state)
         state = 10;
       break;
     case 10: // first PART - wait for IR2 then go fwd and turn
-      snprintf(lines[0], MAX_LEN, "vel=0 : ir2 < 0.3");
-      // drive straight 0.6m - keep an acceleration limit of 1m/s2 (until changed)
-      snprintf(lines[1], MAX_LEN, "vel=0.2,acc=1:dist=0.6");
-      // stop and create an event when arrived at this line
-      snprintf(lines[2], MAX_LEN, "event=1, vel=0");
-      // add a line, so that the robot is occupied until next snippet has arrived
-      snprintf(lines[3], MAX_LEN, ": dist=1");
+      snprintf(lines[0], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.55");
+      snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
+      snprintf(lines[2], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
+      snprintf(lines[3], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.3");
+      snprintf(lines[4], MAX_LEN, "vel=0.5, edgel = 0 : xl>15");
+      snprintf(lines[5], MAX_LEN, "vel=0.5, tr=0.15: turn=90.0");
+      snprintf(lines[6], MAX_LEN, "vel=0.5, edger=0.0: dist=0.3");
+      snprintf(lines[7], MAX_LEN, "vel=0.5, edger=0.0: lv<10");
+      snprintf(lines[8], MAX_LEN, "vel=0.5: dist=0.75");
+      snprintf(lines[9], MAX_LEN, "vel=0.3, tr=0.0: turn=-90.0");
+      snprintf(lines[10], MAX_LEN, "vel=0.5: lv=1");
+      snprintf(lines[11], MAX_LEN, "vel=0.5, tr=0.1: turn=90.0");
+      snprintf(lines[12], MAX_LEN, "vel=0.5, edgel=0.0: lv=0");
+      
       // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 4);
+      sendAndActivateSnippet(lines, 13);
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
       // tell the operator
