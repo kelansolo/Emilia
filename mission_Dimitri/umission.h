@@ -122,7 +122,6 @@ private:
   bool mission3(int & state);
   bool mission4(int & state);
   bool mission5(int & state);
-  bool missionStairs(int & state);
   
   
   
