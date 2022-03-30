@@ -272,6 +272,7 @@ void UMission::runMission()
             ended = mission1(missionState);
             break;
           case 2:
+            printf("# 7");
             ended = mission2(missionState);
             break;/*
           case 3:
@@ -414,9 +415,9 @@ bool UMission::mission1(int & state)
       snprintf(lines[12], MAX_LEN, "vel=0.5, edgel=0.0: lv=0");
       
       // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 13);*/
+      sendAndActivateSnippet(lines, 13);
       // make sure event 1 is cleared
-      bridge->event->isEventSet(1);
+      bridge->event->isEventSet(1);*/
       // tell the operator
       printf("# case=%d sent mission snippet 1\n", state);
 //       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
@@ -433,6 +434,7 @@ bool UMission::mission1(int & state)
       // go to wait for finished
       state = 999;
       featureCnt = 0;
+      printf("# 6");
       break;
     case 11:
       printf("# 2");
