@@ -396,11 +396,7 @@ bool UMission::mission1(int & state)
         state = 10;
       break;
     case 10:
-      snprintf(lines[0], MAX_LEN, "vel=1 : dist = 3");
-      snprintf(lines[1], MAX_LEN, "event=1, vel=0");
-      snprintf(lines[2], MAX_LEN, ": dist=1");
-      sendAndActivateSnippet(lines, 3);
-      /*
+      //snprintf(lines[0], MAX_LEN, "vel=1 : dist = 3");
       snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
       snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
       snprintf(lines[2], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
@@ -415,8 +411,13 @@ bool UMission::mission1(int & state)
       snprintf(lines[11], MAX_LEN, "vel=0.5, tr=0.1: turn=90.0");
       snprintf(lines[12], MAX_LEN, "vel=0.5, edgel=0.0: lv=0");
       
+      snprintf(lines[13], MAX_LEN, "event=1, vel=0");
+      snprintf(lines[14], MAX_LEN, ": dist=1");
+      sendAndActivateSnippet(lines, 15);
+      
+     
       // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 13);*/
+      //sendAndActivateSnippet(lines, 13);*/
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
       // tell the operator
@@ -424,7 +425,7 @@ bool UMission::mission1(int & state)
 
       bridge->send("oled 5 code snippet 1");
       
-      /*
+     
       // play as we go
      
       // go to wait for finished*/
