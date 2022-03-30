@@ -431,12 +431,12 @@ bool UMission::mission1(int & state)
       printf("# 1");
       //
       // play as we go
-      /*
+      
       play.setFile("../The_thing_goes_Bassim.mp3");
       play.setVolume(5); // % (0..100)
-      play.start();*/
+      play.start();
       // go to wait for finished
-      state = 999;
+      state = 11;
       featureCnt = 0;
       printf("# 6");
       break;
