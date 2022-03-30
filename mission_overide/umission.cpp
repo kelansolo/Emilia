@@ -397,6 +397,9 @@ bool UMission::mission1(int & state)
       break;
     case 10:
       snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
+      sendAndActivateSnippet(lines, 1);
+      /*
+      snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
       snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
       snprintf(lines[2], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
       snprintf(lines[3], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.3");
@@ -411,7 +414,7 @@ bool UMission::mission1(int & state)
       snprintf(lines[12], MAX_LEN, "vel=0.5, edgel=0.0: lv=0");
       
       // send the 4 lines to the REGBOT
-      sendAndActivateSnippet(lines, 13);
+      sendAndActivateSnippet(lines, 13);*/
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
       // tell the operator
@@ -419,6 +422,8 @@ bool UMission::mission1(int & state)
 //       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
       //play.say("Code snippet 1.", 90);
       bridge->send("oled 5 code snippet 1");
+      
+      printf("# 1");
       //
       // play as we go
       /*
@@ -430,14 +435,20 @@ bool UMission::mission1(int & state)
       featureCnt = 0;
       break;
     case 11:
+      printf("# 2");
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
         state = 999;
-        play.stopPlaying();
+        printf("# 3");
+        //play.stopPlaying();
       }
       break;
     case 999:
+      printf("mission 1 ended \n");
+      bridge->send("oled 5 \"mission 1 ended.\"");
+      finished = true;
+      break;
     default:
       printf("mission 1 ended \n");
       bridge->send("oled 5 \"mission 1 ended.\"");
