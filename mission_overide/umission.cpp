@@ -402,7 +402,9 @@ bool UMission::mission1(int & state)
     case 10:
       printf("# 11");
       snprintf(lines[0], MAX_LEN, "vel=1 : dist = 3");
-      sendAndActivateSnippet(lines, 1);
+      snprintf(lines[1], MAX_LEN, "event=1, vel=0");
+      snprintf(lines[2], MAX_LEN, ": dist=1");
+      sendAndActivateSnippet(lines, 3);
       /*
       snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
       snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
