@@ -431,7 +431,7 @@ bool UMission::mission1(int & state)
       play.setVolume(5); // % (0..100)
       play.start();*/
       // go to wait for finished
-      state = 11;
+      state = 999;
       featureCnt = 0;
       break;
     case 11:
@@ -445,6 +445,7 @@ bool UMission::mission1(int & state)
       }
       break;
     case 999:
+      printf("# 4");
       printf("mission 1 ended \n");
       bridge->send("oled 5 \"mission 1 ended.\"");
       finished = true;
@@ -677,6 +678,7 @@ bool UMission::mission2(int & state)
 
 bool UMission::mission2(int & state)
 {
+  printf("# 5");
   bool finished = false;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
