@@ -548,10 +548,9 @@ bool UMission::mission5(int & state)
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=%i:time=%i", arm_speed, arm_wait);
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt<0.15,dist=0.3");
         snprintf(lines[line++], MAX_LEN, "vel=-0.2:time=2");
+        snprintf(lines[line++], MAX_LEN, "vel=0, event=2: dist=1");
         sendAndActivateSnippet(lines, line);
       }
-        snprintf(lines[0], MAX_LEN, "vel=0, event=2: dist=1");
-        sendAndActivateSnippet(lines, 1);
         
         printf("# 4");
         
