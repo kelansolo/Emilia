@@ -1,0 +1,7 @@
+/home/local/regbot/mission/build/CMakeFiles/install/strip.dir
+/home/local/regbot/mission/build/CMakeFiles/install.dir
+/home/local/regbot/mission/build/CMakeFiles/list_install_components.dir
+/home/local/regbot/mission/build/CMakeFiles/install/local.dir
+/home/local/regbot/mission/build/CMakeFiles/rebuild_cache.dir
+/home/local/regbot/mission/build/CMakeFiles/edit_cache.dir
+/home/local/regbot/mission/build/CMakeFiles/mission.dir
