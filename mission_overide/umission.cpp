@@ -511,6 +511,62 @@ bool UMission::mission2(int & state)
 }
 
 
+/*bool UMission::mission5(int & state)
+{
+  bool finished = false;
+  // First commands to send to robobot in given mission
+  // (robot sends event 1 after driving 1 meter)):
+  switch (state)
+  {
+    case 0:
+      //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
+      snprintf(lines[0], MAX_LEN, "servo=3, pservo=-50, vservo=0");
+      snprintf(lines[1], MAX_LEN, "vel=0.4 : dist = 0.5");
+      snprintf(lines[2], MAX_LEN, "vel=0.4, tr=0: turn=-90.0");
+      snprintf(lines[3], MAX_LEN, "vel=0.4 : dist = 0.4");
+      snprintf(lines[4], MAX_LEN, "vel=0.4, tr=0: turn=90.0");
+      snprintf(lines[5], MAX_LEN, "vel=0.4 : ir2<0.1");
+      snprintf(lines[6], MAX_LEN, "servo=3, pservo=800, vservo=0");
+      snprintf(lines[7], MAX_LEN, "vel=0.4 : dist = 0.1");
+      snprintf(lines[8], MAX_LEN, "vel=0.4, tr=0: turn=-90.0");
+      snprintf(lines[9], MAX_LEN, "servo=3, pservo=-190, vservo=0:time=1");
+      snprintf(lines[10], MAX_LEN, "vel=0.4 : ir1>1");
+      snprintf(lines[11], MAX_LEN, "vel=0.4 : dist = 0.1");
+      snprintf(lines[12], MAX_LEN, "vel=0.4 : ir1<1");
+      snprintf(lines[13], MAX_LEN, "vel=0.4, tr=0: turn=90.0");
+      snprintf(lines[14], MAX_LEN, "vel=0.4: lv=1");
+      
+      snprintf(lines[15], MAX_LEN, "event=1, vel=0");
+      snprintf(lines[16], MAX_LEN, ": dist=1");
+      sendAndActivateSnippet(lines, 17);
+      
+      // make sure event 1 is cleared
+      bridge->event->isEventSet(1);
+      // tell the operator
+      printf("# case=%d sent mission snippet 1\n", state);
+
+      bridge->send("oled 5 code snippet 1");
+     
+      state = 11;
+      featureCnt = 0;
+      break;
+    case 11:
+      // wait for event 1 (send when finished driving first part)
+      if (bridge->event->isEventSet(1))
+      { // finished first drive
+        state = 999;
+      }
+      break;
+    case 999:
+    default:
+      printf("mission 2 ended \n");
+      bridge->send("oled 5 \"mission 2 ended.\"");
+      finished = true;
+      break;
+  }
+  return finished;
+}*/
+
 bool UMission::mission5(int & state)
 {
   bool finished = false;
@@ -528,7 +584,7 @@ bool UMission::mission5(int & state)
 
     for (size_t i = 0; i < n_stairs; i++) {
       if (i==1) {
-        stair_width = 10
+        stair_width = 10;
       }
       int line = 0;
       snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %.2f",stair_width);
