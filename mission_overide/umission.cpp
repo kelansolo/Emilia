@@ -397,7 +397,7 @@ bool UMission::mission1(int & state)
         state = 10;
       break;
     case 10: // first PART - wait for IR2 then go fwd and turn
-      snprintf(lines[0], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.55");
+      snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.55");
       snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
       snprintf(lines[2], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
       snprintf(lines[3], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.3");
