@@ -519,6 +519,7 @@ bool UMission::mission5(int & state)
   switch (state)
   {
     case 0:
+      {
       float stair_width = 20; // cm
       int arm_wait = 10; //s
       int n_stairs = 5;
@@ -557,13 +558,16 @@ bool UMission::mission5(int & state)
       state = 11;
       featureCnt = 0;
       break;
+      }
     case 11:
+      {
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
         state = 999;
       }
       break;
+      }
     case 999:
     default:
       printf("mission 2 ended \n");
