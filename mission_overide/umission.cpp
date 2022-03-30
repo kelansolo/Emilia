@@ -275,6 +275,7 @@ void UMission::runMission()
             ended = mission2(missionState);
             break;*/
           case 1:
+            printf("# 1");
             ended = mission5(missionState);
             break; 
             /*
@@ -293,6 +294,7 @@ void UMission::runMission()
             break;
             */
           default:
+            printf("# default");
             // no more missions - end everything
             finished = true;
             break;
@@ -520,11 +522,15 @@ bool UMission::mission5(int & state)
   {
     case 0:
       {
+        printf("# 2");
+        
       float stair_width = 20; // cm
       int arm_wait = 10; //s
       int n_stairs = 5;
       int arm_speed = 645;
       int line = 0;
+        
+       printf("# 3");
 
       for (size_t i = 0; i < n_stairs; i++) {
         if (i==1) {
@@ -544,6 +550,8 @@ bool UMission::mission5(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0:time = 2");
         sendAndActivateSnippet(lines, line);
       }
+        
+        printf("# 4");
       snprintf(lines[0], MAX_LEN, "event=1, vel=0");
       snprintf(lines[1], MAX_LEN, ": dist=1");
       sendAndActivateSnippet(lines, 2);
