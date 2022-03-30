@@ -548,18 +548,19 @@ bool UMission::mission5(int & state)
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=%i:time=%i", arm_speed, arm_wait);
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt<0.15,dist=0.3");
         snprintf(lines[line++], MAX_LEN, "vel=-0.2:dist=%.2f", stair_width);
-        snprintf(lines[line++], MAX_LEN, "vel=0:time = 2");
-        snprintf(lines[line++], MAX_LEN, ": dist=1");
+        snprintf(lines[line++], MAX_LEN, "vel=0, event=2: dist=1");
         sendAndActivateSnippet(lines, line);
       }
         
         printf("# 4");
-      snprintf(lines[0], MAX_LEN, "event=1, vel=0");
-      snprintf(lines[1], MAX_LEN, ": dist=1");
-      sendAndActivateSnippet(lines, 2);
+        
+        for (int i = 0; i < line; i++)
+          { // print sent lines
+            printf("# line %d: %s\n", i, lines[i]);
+          }
       
       // make sure event 1 is cleared
-      bridge->event->isEventSet(1);
+      bridge->event->isEventSet(2);
       // tell the operator
       printf("# case=%d sent mission snippet 1\n", state);
 
@@ -572,7 +573,7 @@ bool UMission::mission5(int & state)
     case 11:
       {
       // wait for event 1 (send when finished driving first part)
-      if (bridge->event->isEventSet(1))
+      if (bridge->event->isEventSet(2))
       { // finished first drive
         printf("# FIN");
         state = 999;
