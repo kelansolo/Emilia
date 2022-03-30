@@ -271,10 +271,9 @@ void UMission::runMission()
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
-            /*
           case 2:
             ended = mission2(missionState);
-            break;
+            break;/*
           case 3:
             ended = mission3(missionState);
             break;
@@ -396,8 +395,8 @@ bool UMission::mission1(int & state)
       if (bridge->joy->button[BUTTON_GREEN])
         state = 10;
       break;
-    case 10: // first PART - wait for IR2 then go fwd and turn
-      snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.55");
+    case 10:
+      snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
       snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
       snprintf(lines[2], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
       snprintf(lines[3], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.3");
@@ -464,12 +463,46 @@ bool UMission::mission2(int & state)
     case 0:
       // tell the operatior what to do
       printf("# started mission 2.\n");
+      /*
 //       system("espeak \"looking for ArUco\" -ven+f4 -s130 -a5 2>/dev/null &"); 
       play.say("Looking for ArUco.", 90);
       bridge->send("oled 5 looking 4 ArUco");
-      state=11;
+      state=11;*/
+      state=10;
+      break;
+    case 10:
+      snprintf(lines[0], MAX_LEN, "vel=0.4: dist = 0.3");
+      snprintf(lines[1], MAX_LEN, "vel=1: dist = 0.3");
+      
+      // send the 4 lines to the REGBOT
+      sendAndActivateSnippet(lines, 2);
+      // make sure event 1 is cleared
+      bridge->event->isEventSet(2);
+      // tell the operator
+      printf("# case=%d sent mission snippet 1\n", state);
+//       system("espeak \"code snippet 1.\" -ven+f4 -s130 -a5 2>/dev/null &"); 
+      //play.say("Code snippet 2.", 90);
+      bridge->send("oled 5 code snippet 2");
+      //
+      // play as we go
+      //play.setFile("../The_thing_goes_Bassim.mp3");
+      //play.setVolume(5); // % (0..100)
+      //play.start();
+      // go to wait for finished
+      state = 11;
+      featureCnt = 0;
       break;
     case 11:
+      // wait for event 1 (send when finished driving first part)
+      if (bridge->event->isEventSet(2))
+      { // finished first drive
+        state = 999;
+        //play.stopPlaying();
+      }
+      break;
+      /*
+    case 11:
+      
       // wait for finished driving first part)
       if (fabsf(bridge->motor->getVelocity()) < 0.001 and bridge->imu->turnrate() < (2*180/M_PI))
       { // finished first drive and turnrate is zero'ish
@@ -482,6 +515,7 @@ bool UMission::mission2(int & state)
         cam->doArUcoAnalysis = true;
       }
       break;
+      
     case 12:
       if (not cam->doArUcoAnalysis)
       { // aruco processing finished
@@ -614,13 +648,13 @@ bool UMission::mission2(int & state)
         // no, stop
         state = 999;
       }
-      break;
+      break;*/
     case 999:
     default:
       printf("mission 1 ended \n");
       bridge->send("oled 5 \"mission 1 ended.\"");
       finished = true;
-      play.stopPlaying();
+      //play.stopPlaying();
       break;
   }
   // printf("# mission1 return (state=%d, finished=%d, )\n", state, finished);
