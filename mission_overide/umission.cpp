@@ -477,7 +477,7 @@ bool UMission::mission2(int & state)
       snprintf(lines[11], MAX_LEN, "vel=0.4 : dist = 0.1");
       snprintf(lines[12], MAX_LEN, "vel=0.4 : ir1<1");
       snprintf(lines[13], MAX_LEN, "vel=0.4, tr=0: turn=90.0");
-      snprintf(lines[14], MAX_LEN, "vel=0.4: lv=1");
+      snprintf(lines[14], MAX_LEN, "vel=0.4: lv>15");
       
       snprintf(lines[15], MAX_LEN, "event=1, vel=0");
       snprintf(lines[16], MAX_LEN, ": dist=1");
