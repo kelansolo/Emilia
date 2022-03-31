@@ -265,7 +265,6 @@ public:
   /**
    * Clear all event flags to false */
   void clearEvents();
-  void clearEvent(int i);
   /**
    * Requests if this event has occured.
    * \param event the event flag to test
