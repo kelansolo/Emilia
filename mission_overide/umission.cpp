@@ -535,6 +535,8 @@ bool UMission::mission2(int & state)
 bool UMission::mission3(int & state)
 {
   bool finished = false;
+  printf("# 1");
+  bridge->event->clearEvent(1)
   switch (state)
   {
      case 0:
@@ -551,15 +553,15 @@ bool UMission::mission3(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=2, edgel = 0 : dist = 2");
       snprintf(lines[line++], MAX_LEN, "vel=2,  edgel = 0 : ir1<0.5");
       
-      snprintf(lines[line++], MAX_LEN, "event=2, vel=0");
+      snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
       snprintf(lines[line++], MAX_LEN, ": dist=1");
       sendAndActivateSnippet(lines, line);
         
       
       // make sure event 1 is cleared
-      bridge->event->isEventSet(2);
+      bridge->event->isEventSet(1);
       // tell the operator
-      printf("# ouiiiiii", state);
+      printf("# ouiiiiii");
 
       bridge->send("oled 5 code snippet 1");
      
@@ -570,7 +572,7 @@ bool UMission::mission3(int & state)
     case 11:
       {
       // wait for event 1 (send when finished driving first part)
-      if (bridge->event->isEventSet(2))
+      if (bridge->event->isEventSet(1))
       { // finished first drive
         state = 999;
       }
@@ -599,6 +601,7 @@ bool UMission::mission4(int & state)
   {
     case 999:
     default:
+      printf("# 2");
       printf("mission 4 ended\n");
       bridge->send("oled 5 mission 4 ended.");
       finished = true;
