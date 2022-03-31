@@ -471,7 +471,7 @@ bool UMission::mission2(int & state)
   {
     case 0:
       {
-      int line = 0
+      int line = 0;
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-50, vservo=0");
       snprintf(lines[line++], MAX_LEN, "vel=0.4 : dist = 0.5");
@@ -539,7 +539,7 @@ bool UMission::mission3(int & state)
   {
      case 0:
       {
-      int line = 0
+      int line = 0;
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist=1");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=900, vservo=0: time = 0.5");
