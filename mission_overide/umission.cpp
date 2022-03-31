@@ -404,9 +404,9 @@ bool UMission::mission1(int & state)
       int line = 0;
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=0, vservo=0");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
-      snprintf(lines[line++], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
+      snprintf(lines[line++], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 0 : dist = 2");
-      snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 2 : ir1<0.3");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 2 : ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0 : time = 1");
       snprintf(lines[line++], MAX_LEN, "vel=0.1, edger = 2 : xl>10");
       snprintf(lines[line++], MAX_LEN, "vel=0.5, tr=0.15: turn=90.0");
