@@ -273,10 +273,10 @@ void UMission::runMission()
             break;
           case 2:
             ended = mission2(missionState);
-            break;
+            break;/*
           case 3:
             ended = mission3(missionState);
-            break;/*
+            break;
           case 4:
             ended = mission4(missionState);
             break;
@@ -467,7 +467,6 @@ bool UMission::mission2(int & state)
   bool finished = false;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
-  bridge->event->clearEvents();
   switch (state)
   {
     case 0:
