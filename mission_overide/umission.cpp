@@ -400,23 +400,26 @@ bool UMission::mission1(int & state)
         state = 10;
       break;
     case 10:
-      //snprintf(lines[0], MAX_LEN, "vel=1 : dist = 3");
-      snprintf(lines[0], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
-      snprintf(lines[1], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
-      snprintf(lines[2], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
-      snprintf(lines[3], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.3");
-      snprintf(lines[4], MAX_LEN, "vel=0.5, edgel = 0 : xl>15");
-      snprintf(lines[5], MAX_LEN, "vel=0.5, tr=0.15: turn=90.0");
-      snprintf(lines[6], MAX_LEN, "vel=0.5, edger=0.0: dist=0.3");
-      snprintf(lines[7], MAX_LEN, "vel=0.5, edger=0.0: lv<10");
-      snprintf(lines[8], MAX_LEN, "vel=0.5: dist=0.75");
-      snprintf(lines[9], MAX_LEN, "vel=0.3, tr=0.0: turn=-90.0");
-      snprintf(lines[10], MAX_LEN, "vel=0.5: lv=1");
-      snprintf(lines[11], MAX_LEN, "vel=0.5, tr=0.1: turn=90.0");
-      snprintf(lines[12], MAX_LEN, "vel=0.5, edgel=0.0: lv=0");
+      int line = 0;
+      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-50, vservo=0");
+      snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
+      snprintf(lines[line++], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.3");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.5");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.3");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, edgel = 0 : xl>15");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, tr=0.15: turn=90.0");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, edger=0.0: dist=0.3");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, edger=0.0: lv<10");
+      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=800, vservo=0");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5: dist=0.75");
+      snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-90.0");
+      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-50, vservo=0");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5: xl>15");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, tr=0.1: turn=90.0");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5, edgel=0.0: lv<10");
       
-      snprintf(lines[13], MAX_LEN, "event=1, vel=0");
-      snprintf(lines[14], MAX_LEN, ": dist=1");
+      snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
+      snprintf(lines[line++], MAX_LEN, ": dist=1");
       sendAndActivateSnippet(lines, 15);
       
      
