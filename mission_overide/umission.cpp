@@ -388,6 +388,7 @@ bool UMission::mission1(int & state)
   switch (state)
   {
     case 0:
+      {
       // tell the operatior what to do
       printf("# press green to start.\n");
 //       system("espeak \"press green to start\" -ven+f4 -s130 -a5 2>/dev/null &");
@@ -439,13 +440,16 @@ bool UMission::mission1(int & state)
       state = 11;
       featureCnt = 0;
       break;
+      }
     case 11:
+      {
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
         state = 999;
       }
       break;
+      }
     case 999:
     default:
       printf("mission 1 ended \n");
