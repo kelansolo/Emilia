@@ -276,7 +276,7 @@ void UMission::runMission()
             break;*/
           case 1:
             printf("# 1");
-            ended = mission5(missionState);
+            ended = mission3(missionState);
             break; 
             /*
           case 3:
@@ -513,94 +513,14 @@ bool UMission::mission2(int & state)
 }
 
 
-bool UMission::mission5(int & state)
-{
-  bool finished = false;
-  // First commands to send to robobot in given mission
-  // (robot sends event 1 after driving 1 meter)):
-  switch (state)
-  {
-    case 0:
-      {
-        printf("# 2");
-        
-      float stair_width = 2; // cm
-      int arm_wait = 10; //s
-      int n_stairs = 5;
-      int arm_speed = 645;
-      int line = 0;
-        
-       printf("# 3");
-
-      for (size_t i = 0; i < n_stairs; i++) {
-        if (i==1) {
-          stair_width = 1;
-        }
-        printf("# for");
-        int line = 0;
-        snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",stair_width);
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
-        snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2:dist=0.07");
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=%i:time=%i", arm_speed, arm_wait);
-        snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt<0.15,dist=0.3");
-        snprintf(lines[line++], MAX_LEN, "vel=-0.2:time=2");
-        snprintf(lines[line++], MAX_LEN, "vel=0, event=2: dist=1");
-        snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
-        snprintf(lines[line++], MAX_LEN, ": dist=1");
-        sendAndActivateSnippet(lines, line);
-        
-        while (bridge->event->isEventSet(1)!=1){}
-      }
-        
-        printf("# 4");
-        /*
-        for (int i = 0; i < line; i++)
-          { // print sent lines
-            printf("# line %d: %s\n", i, lines[i]);
-          }*/
-      
-      // make sure event 1 is cleared
-      bridge->event->isEventSet(1);
-      // tell the operator
-      printf("# case=%d sent mission snippet 1\n", state);
-
-      bridge->send("oled 5 code snippet 1");
-     
-      state = 11;
-      featureCnt = 0;
-      break;
-      }
-    case 11:
-      {
-      // wait for event 1 (send when finished driving first part)
-      if (bridge->event->isEventSet(1))
-      { // finished first drive
-        printf("# FIN");
-        state = 999;
-      }
-      break;
-      }
-    case 999:
-    default:
-      printf("mission 2 ended \n");
-      bridge->send("oled 5 \"mission 2 ended.\"");
-      finished = true;
-      break;
-  }
-  return finished;
-}
-
-
 /**
  * Run mission
  * \param state is kept by caller, but is changed here
  *              therefore defined as reference with the '&'.
  *              State will be 0 at first call.
  * \returns true, when finished. */
+
+
 bool UMission::mission3(int & state)
 {
   bool finished = false;
@@ -767,4 +687,86 @@ void UMission::closeLog()
     fclose(logMission);
     logMission = NULL;
   }
+}
+
+
+bool UMission::missionStairs(int & state)
+{
+  bool finished = false;
+  // First commands to send to robobot in given mission
+  // (robot sends event 1 after driving 1 meter)):
+  switch (state)
+  {
+    case 0:
+      {
+        printf("# 2");
+        
+      float stair_width = 2; // cm
+      int arm_wait = 10; //s
+      int n_stairs = 5;
+      int arm_speed = 645;
+      int line = 0;
+        
+       printf("# 3");
+
+      for (size_t i = 0; i < n_stairs; i++) {
+        if (i==1) {
+          stair_width = 1;
+        }
+        printf("# for");
+        int line = 0;
+        snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",stair_width);
+        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
+        snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
+        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
+        snprintf(lines[line++], MAX_LEN, "vel=0.2:dist=0.07");
+        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=%i:time=%i", arm_speed, arm_wait);
+        snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt<0.15,dist=0.3");
+        snprintf(lines[line++], MAX_LEN, "vel=-0.2:time=2");
+        snprintf(lines[line++], MAX_LEN, "vel=0, event=2: dist=1");
+        snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
+        snprintf(lines[line++], MAX_LEN, ": dist=1");
+        sendAndActivateSnippet(lines, line);
+        
+        while (bridge->event->isEventSet(1)!=1){}
+      }
+        
+        printf("# 4");
+        /*
+        for (int i = 0; i < line; i++)
+          { // print sent lines
+            printf("# line %d: %s\n", i, lines[i]);
+          }*/
+      
+      // make sure event 1 is cleared
+      bridge->event->isEventSet(1);
+      // tell the operator
+      printf("# case=%d sent mission snippet 1\n", state);
+
+      bridge->send("oled 5 code snippet 1");
+     
+      state = 11;
+      featureCnt = 0;
+      break;
+      }
+    case 11:
+      {
+      // wait for event 1 (send when finished driving first part)
+      if (bridge->event->isEventSet(1))
+      { // finished first drive
+        printf("# FIN");
+        state = 999;
+      }
+      break;
+      }
+    case 999:
+    default:
+      printf("mission 2 ended \n");
+      bridge->send("oled 5 \"mission 2 ended.\"");
+      finished = true;
+      break;
+  }
+  return finished;
 }
