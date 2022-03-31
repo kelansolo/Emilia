@@ -536,7 +536,7 @@ bool UMission::mission3(int & state)
 {
   bool finished = false;
   printf("# 1");
-  bridge->event->clearEvent(1)
+  bridge->event->clearEvent(1);
   switch (state)
   {
      case 0:
