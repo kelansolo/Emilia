@@ -467,6 +467,7 @@ bool UMission::mission2(int & state)
   bool finished = false;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
+  bridge->event->clearEvents();
   switch (state)
   {
     case 0:
@@ -536,7 +537,6 @@ bool UMission::mission3(int & state)
 {
   bool finished = false;
   printf("# 1");
-  bridge->event->clearEvent(1);
   switch (state)
   {
      case 0:
