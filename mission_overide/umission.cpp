@@ -403,14 +403,14 @@ bool UMission::mission1(int & state)
     case 10:
       int line = 0;
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=0, vservo=0");
-      snprintf(lines[line++], MAX_LEN, "vel=0, edger = 0 : time = 0");
+      snprintf(lines[line++], MAX_LEN, "vel=0, edger = 0 : time = 0.3");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist = 0.3");
       snprintf(lines[line++], MAX_LEN, "vel=0.75, edger = 0 : ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 0 : dist = 2");
       snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0 : time = 0.5");
-      //snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 0 : dist = 0.");
-      snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : xl>15");
+      snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.3");
+      snprintf(lines[line++], MAX_LEN, "vel=0.2, edger = 0 : xl>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0.15: turn=90.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.5, edger=0.0: dist=0.3");
       snprintf(lines[line++], MAX_LEN, "vel=0.5, edger=0.0: lv<10");
