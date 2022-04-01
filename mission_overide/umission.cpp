@@ -746,20 +746,45 @@ bool UMission::missionStairs(int & state)
   bool finished = false;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
+  int i = 0;
   switch (state)
   {
     case 0:
       {
-        printf("# 2");
-        
-      float stair_width = 2; // cm
-      int arm_wait = 10; //s
-      int n_stairs = 5;
-      int arm_speed = 645;
-      int line = 0;
+       printf("# 2");
+       float stair_width = 2; // cm 
+       if (i==1) {
+          stair_width = 1;
+       }
+       int arm_wait = 10; //s
+       int n_stairs = 5;
+       int arm_speed = 645;
+       int line = 0;
         
        printf("# 3");
-
+        
+        
+        
+        
+        int line = 0;
+        snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",stair_width);
+        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
+        snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
+        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
+        snprintf(lines[line++], MAX_LEN, "vel=0.2:dist=0.07");
+        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=%i:time=%i", arm_speed, arm_wait);
+        snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt<0.15,dist=0.3");
+        snprintf(lines[line++], MAX_LEN, "vel=-0.2:time=2");
+        snprintf(lines[line++], MAX_LEN, "vel=0, event=2: dist=1");
+        snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
+        snprintf(lines[line++], MAX_LEN, ": dist=1");
+        sendAndActivateSnippet(lines, line);
+        
+        
+        while (bridge->event->isEventSet(1)!=1){}
+      /*
       for (size_t i = 0; i < n_stairs; i++) {
         if (i==1) {
           stair_width = 1;
@@ -783,13 +808,8 @@ bool UMission::missionStairs(int & state)
         
         while (bridge->event->isEventSet(1)!=1){}
       }
-        
-        printf("# 4");
-        /*
-        for (int i = 0; i < line; i++)
-          { // print sent lines
-            printf("# line %d: %s\n", i, lines[i]);
-          }*/
+      */  
+      printf("# 4");
       
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
@@ -807,8 +827,14 @@ bool UMission::missionStairs(int & state)
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
+        i++;
+        if(i<n_stairs){
+          state = 0;
+        }
+        else{
+        state= 999;
         printf("# FIN");
-        state = 999;
+        }
       }
       break;
       }
