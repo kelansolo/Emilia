@@ -267,16 +267,16 @@ void UMission::runMission()
         }
         switch(mission)
         {
-         
+         /*
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
           case 2:
             ended = mission2(missionState);
-            break;/*
-          case 3:
+            break;*/
+          case 1:
             ended = mission3(missionState);
-            break;
+            break;/*
           case 4:
             ended = mission4(missionState);
             break;
