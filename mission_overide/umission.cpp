@@ -843,7 +843,7 @@ bool UMission::missionStairs(int & state)
       printf("mission 2 ended \n");
       bridge->send("oled 5 \"mission 2 ended.\"");
       finished = true;
-      break;*/
+      break;
   }
-  return finished;
+  return finished;*/
 }
