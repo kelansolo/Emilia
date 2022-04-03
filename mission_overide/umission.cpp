@@ -535,8 +535,7 @@ bool UMission::mission2(int & state)
 bool UMission::mission3(int & state)
 {
   bool finished = false;
-  printf("# ");
-  printf(state);
+  printf("# case=%d \n", state);
   switch (state)
   {
      case 0:
