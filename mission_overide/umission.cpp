@@ -270,13 +270,13 @@ void UMission::runMission()
          /*
           case 1: // running auto mission
             ended = mission1(missionState);
+            break;
+          case 2:
+            ended = mission2(missionState);
             break;*/
           case 1:
-            ended = mission2(missionState);
-            break;/*
-          case 3:
             ended = mission3(missionState);
-            break;
+            break;/*
           case 4:
             ended = mission4(missionState);
             break;
@@ -535,7 +535,8 @@ bool UMission::mission2(int & state)
 bool UMission::mission3(int & state)
 {
   bool finished = false;
-  printf("# 1");
+  printf("# ");
+  printf(state);
   switch (state)
   {
      case 0:
@@ -561,7 +562,7 @@ bool UMission::mission3(int & state)
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
       // tell the operator
-      printf("# ouiiiiii");
+      
 
       bridge->send("oled 5 code snippet 1");
      
