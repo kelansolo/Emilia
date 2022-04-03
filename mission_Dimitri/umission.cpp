@@ -264,10 +264,10 @@ void UMission::runMission()
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
-            /*
+            
           case 2:
             ended = mission2(missionState);
-            break;
+            break;/*
           case 3:
             ended = mission3(missionState);
             break;
