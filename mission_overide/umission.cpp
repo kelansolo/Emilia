@@ -270,13 +270,13 @@ void UMission::runMission()
          /*
           case 1: // running auto mission
             ended = mission1(missionState);
-            break;
-          case 2:
-            ended = mission2(missionState);
             break;*/
           case 1:
-            ended = mission3(missionState);
+            ended = mission2(missionState);
             break;/*
+          case 3:
+            ended = mission3(missionState);
+            break;
           case 4:
             ended = mission4(missionState);
             break;
@@ -540,6 +540,7 @@ bool UMission::mission3(int & state)
   {
      case 0:
       {
+        
       int line = 0;
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist=2");
