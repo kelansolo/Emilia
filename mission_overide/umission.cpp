@@ -541,6 +541,10 @@ bool UMission::mission3(int & state)
      case 0:
       {
         
+      // make sure event 1 is cleared
+      bridge->event->isEventSet(1);
+      // tell the operator
+        
       int line = 0;
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist=2");
@@ -556,12 +560,6 @@ bool UMission::mission3(int & state)
       snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
       snprintf(lines[line++], MAX_LEN, ": dist=1");
       sendAndActivateSnippet(lines, line);
-        
-      
-      // make sure event 1 is cleared
-      bridge->event->isEventSet(1);
-      // tell the operator
-      
 
       bridge->send("oled 5 code snippet 1");
      
@@ -576,6 +574,7 @@ bool UMission::mission3(int & state)
       { // finished first drive
         state = 999;
       }
+        break;
       }
     case 999:
     default:
