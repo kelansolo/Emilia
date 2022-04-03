@@ -742,7 +742,7 @@ void UMission::closeLog()
 
 
 bool UMission::missionStairs(int & state)
-{
+{/*
   bool finished = false;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
@@ -783,7 +783,7 @@ bool UMission::missionStairs(int & state)
         sendAndActivateSnippet(lines, line);
         
         
-        while (bridge->event->isEventSet(1)!=1){}
+        while (bridge->event->isEventSet(1)!=1){}*/
       /*
       for (size_t i = 0; i < n_stairs; i++) {
         if (i==1) {
@@ -808,7 +808,7 @@ bool UMission::missionStairs(int & state)
         
         while (bridge->event->isEventSet(1)!=1){}
       }
-      */  
+      *//*
       printf("# 4");
       
       // make sure event 1 is cleared
@@ -843,7 +843,7 @@ bool UMission::missionStairs(int & state)
       printf("mission 2 ended \n");
       bridge->send("oled 5 \"mission 2 ended.\"");
       finished = true;
-      break;
+      break;*/
   }
   return finished;
 }
