@@ -755,11 +755,13 @@ bool UMission::missionStairs(int & state)
        int line = 0;
         
        if (i==0) {
+         printf("# if i=%d \n", i);
           snprintf(lines[line++], MAX_LEN,"servo=3, pservo=900, vservo=0 :time=0.3");
-          snprintf(lines[line++], MAX_LEN,"vel=0.3, edgel=1: ir2<0.6");
+          snprintf(lines[line++], MAX_LEN,"vel=0.4, edgel=1: ir2<0.6");
           snprintf(lines[line++], MAX_LEN,"vel=0.2, edgel=0: dist=0.2");
        }
         else{
+          printf("# ifelse i=%d \n", i);
           snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",0.18);
           snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
         }
