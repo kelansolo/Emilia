@@ -746,10 +746,12 @@ bool UMission::missionStairs(int & state)
   bool finished = false;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
-  int i = 0;
+  
   switch (state)
   {
     case 0:
+      int i = 0;
+    case 1:
       {
        printf("# 2");
        int line = 0;
@@ -774,7 +776,7 @@ bool UMission::missionStairs(int & state)
         
         
 
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=0 :time=%i",arm_speed,arm_wait);
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
         snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
         snprintf(lines[line++], MAX_LEN, "vel=0.2:dist=0.07");
@@ -808,7 +810,7 @@ bool UMission::missionStairs(int & state)
           state= 999;
         }
         else
-          state = 0;
+          state = 1;
       }
       break;
       }
