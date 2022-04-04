@@ -758,7 +758,8 @@ bool UMission::missionStairs(int & state)
        }
        int arm_wait = 10; //s
        int arm_speed = 645;
-       
+        
+       bridge->event->isEventSet(1);
         
         int line = 0;
         snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",stair_width);
@@ -777,7 +778,7 @@ bool UMission::missionStairs(int & state)
         sendAndActivateSnippet(lines, line);
       
       // make sure event 1 is cleared
-      bridge->event->isEventSet(1);
+      
       // tell the operator
       printf("# case=%d sent mission snippet 1\n", state);
 
@@ -789,20 +790,21 @@ bool UMission::missionStairs(int & state)
       }
     case 11:
       {
-        printf("# i= 1\n", i);
+        printf("# i=%d \n", i);
       int n_stairs = 5;
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
         i++;
-        if(i<n_stairs){
+        if(i==5){
+          printf("# FIN");
+          state= 999;
+        }
+        else
           state = 0;
-        }
-        else{
-        state= 999;
-        printf("# FIN");
-        }
       }
+        else
+          state = 0;
       break;
       }
     case 999:
