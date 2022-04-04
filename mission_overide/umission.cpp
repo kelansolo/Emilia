@@ -266,7 +266,7 @@ void UMission::runMission()
           bridge->send("oled 3 running AUTO\n");
         }
         switch(mission)
-        {
+        {/*
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
@@ -275,7 +275,7 @@ void UMission::runMission()
             break;
           case 3:
             ended = mission3(missionState);
-            break;/*
+            break;
           case 4:
             ended = mission4(missionState);
             break;
@@ -287,7 +287,11 @@ void UMission::runMission()
           case 5:
             ended = missionCamera(missionState);
             break;*/
-            
+           
+          case 1:
+            ended = missionStairs(missionState);
+            break;
+              
           default:
             printf("# default");
             // no more missions - end everything
@@ -753,9 +757,8 @@ bool UMission::missionStairs(int & state)
           stair_width = 1;
        }
        int arm_wait = 10; //s
-       int n_stairs = 5;
+
        int arm_speed = 645;
-       int line = 0;
         
        printf("# 3");
         
@@ -820,6 +823,7 @@ bool UMission::missionStairs(int & state)
       }
     case 11:
       {
+      int n_stairs = 5;
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
