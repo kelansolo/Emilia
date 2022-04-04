@@ -812,8 +812,6 @@ bool UMission::missionStairs(int & state)
         else
           state = 0;
       }
-        else
-          state = 0;
       break;
       }
     case 999:
