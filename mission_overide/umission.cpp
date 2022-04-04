@@ -744,6 +744,7 @@ void UMission::closeLog()
 bool UMission::missionStairs(int & state)
 {
   bool finished = false;
+  int i;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
   
@@ -751,7 +752,7 @@ bool UMission::missionStairs(int & state)
   {
     case 0:
       {
-      int i = 0;
+      i = 0;
       state = 1;
       break;
       }
