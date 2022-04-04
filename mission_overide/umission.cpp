@@ -740,22 +740,18 @@ void UMission::closeLog()
   }
 }
 
+int i;
 
 bool UMission::missionStairs(int & state)
 {
   bool finished = false;
-  int i;
   // First commands to send to robobot in given mission
   // (robot sends event 1 after driving 1 meter)):
   
   switch (state)
   {
     case 0:
-      {
-      i = 0;
-      state = 1;
-      break;
-      }
+      int i = 0;
     case 1:
       {
        printf("# 2");
