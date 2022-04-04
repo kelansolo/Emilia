@@ -770,11 +770,11 @@ bool UMission::missionStairs(int & state)
        }
         else{
           printf("# ifelse i=%d \n", i);
-          snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",0.18);
+          snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= 0.18");
           snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
         }
         
-       int arm_wait = 1; //s
+       int arm_wait = 10; //s
        int arm_speed = 645;
         
        bridge->event->isEventSet(1);
