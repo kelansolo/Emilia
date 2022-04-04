@@ -774,14 +774,14 @@ bool UMission::missionStairs(int & state)
           snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
         }
         
-       int arm_wait = 10; //s
+       int arm_wait = 1; //s
        int arm_speed = 645;
         
        bridge->event->isEventSet(1);
         
         
 
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=0 :time=%i",arm_speed,arm_wait);
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=0 :time=1");
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
         snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
         snprintf(lines[line++], MAX_LEN, "vel=0.2:dist=0.07");
