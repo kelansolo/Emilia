@@ -753,28 +753,25 @@ bool UMission::missionStairs(int & state)
       {
        printf("# 2");
        int line = 0;
-        /*
+        
        if (i==0) {
          printf("# if i=%d \n", i);
           snprintf(lines[line++], MAX_LEN,"servo=3, pservo=900, vservo=0");
-          snprintf(lines[line++], MAX_LEN,"vel=0.3, edgel=1: ir2<0.6");
+          snprintf(lines[line++], MAX_LEN,"vel=0.4, edgel=1: ir2<0.6");
           snprintf(lines[line++], MAX_LEN,"vel=0.2, edgel=0: dist=0.2");
        }
         else{
           printf("# ifelse i=%d \n", i);
           snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",0.18);
           snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
-        }*/
+        }
         
        int arm_wait = 10; //s
        int arm_speed = 645;
         
        bridge->event->isEventSet(1);
         
-        snprintf(lines[line++], MAX_LEN,"servo=3, pservo=900, vservo=0");
-        snprintf(lines[line++], MAX_LEN,"vel=0.4, edgel=1: ir2<0.6");
-        snprintf(lines[line++], MAX_LEN,"vel=0, edgel=0: dist=0.2");
-        snprintf(lines[line++], MAX_LEN,"vel=0.0,: time=1");
+        
 
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
