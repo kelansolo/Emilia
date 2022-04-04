@@ -750,7 +750,11 @@ bool UMission::missionStairs(int & state)
   switch (state)
   {
     case 0:
+      {
       int i = 0;
+      state = 1;
+      break;
+      }
     case 1:
       {
        printf("# 2");
