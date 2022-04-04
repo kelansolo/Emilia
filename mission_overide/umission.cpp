@@ -469,16 +469,13 @@ bool UMission::mission2(int & state)
       {
       int line = 0;
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-50, vservo=0");
+      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=0, vservo=0");
       snprintf(lines[line++], MAX_LEN, "vel=0.4 : dist = 0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0: turn=-90.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.4 : dist = 0.4");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0: turn=90.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.4 : ir2<0.1");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=800, vservo=0:time=0.3");
-      snprintf(lines[line++], MAX_LEN, "vel=0.4 : dist = 0.1");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0: turn=-90.0");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-100, vservo=0:time=1");
       snprintf(lines[line++], MAX_LEN, "vel=0.4 : ir1>1");
       snprintf(lines[line++], MAX_LEN, "vel=0.4 : dist = 0.1");
       snprintf(lines[line++], MAX_LEN, "vel=0.4 : ir1<1");
@@ -546,12 +543,12 @@ bool UMission::mission3(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist=2");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-50, vservo=0: time = 0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : ir1<0.5");
-      snprintf(lines[line++], MAX_LEN, "vel=-0.3 : dist=0.1");
+      snprintf(lines[line++], MAX_LEN, "vel=-0.3 : dist=0.05");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=800, vservo=0: time = 0.5");
       snprintf(lines[line++], MAX_LEN, "vel = 0 :  ir2<0.4");
       snprintf(lines[line++], MAX_LEN, "vel = 0 :  ir2>0.4");
-      snprintf(lines[line++], MAX_LEN, "vel=1,  edgel = 0 : dist = 2");
-      snprintf(lines[line++], MAX_LEN, "vel=1,  edgel = 0 : ir1<0.5");
+      snprintf(lines[line++], MAX_LEN, "vel=0.3,acc=1, edgel = 0 : dist = 2");
+      snprintf(lines[line++], MAX_LEN, "vel=1,acc=1,  edgel = 0 : ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=1, edgel = 0 : dist = 2");
       snprintf(lines[line++], MAX_LEN, "vel=1,  edgel = 0 : ir1<0.5");
       
