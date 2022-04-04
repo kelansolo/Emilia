@@ -267,14 +267,13 @@ void UMission::runMission()
         }
         switch(mission)
         {
-         /*
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
           case 2:
             ended = mission2(missionState);
-            break;*/
-          case 1:
+            break;
+          case 3:
             ended = mission3(missionState);
             break;/*
           case 4:
@@ -552,10 +551,10 @@ bool UMission::mission3(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=0.5, edger = 0 : ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel = 0 :  ir2<0.4");
       snprintf(lines[line++], MAX_LEN, "vel = 0 :  ir2>0.4");
-      snprintf(lines[line++], MAX_LEN, "vel=1,  acc = 4,  edgel = 0 : dist = 2");
-      snprintf(lines[line++], MAX_LEN, "vel=2,  edgel = 0 : ir1<0.5");
-      snprintf(lines[line++], MAX_LEN, "vel=2, edgel = 0 : dist = 2");
-      snprintf(lines[line++], MAX_LEN, "vel=2,  edgel = 0 : ir1<0.5");
+      snprintf(lines[line++], MAX_LEN, "vel=1,  edgel = 0 : dist = 2");
+      snprintf(lines[line++], MAX_LEN, "vel=1,  edgel = 0 : ir1<0.5");
+      snprintf(lines[line++], MAX_LEN, "vel=1, edgel = 0 : dist = 2");
+      snprintf(lines[line++], MAX_LEN, "vel=1,  edgel = 0 : ir1<0.5");
       
       snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
       snprintf(lines[line++], MAX_LEN, ": dist=1");
