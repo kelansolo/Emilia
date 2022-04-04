@@ -757,13 +757,8 @@ bool UMission::missionStairs(int & state)
           stair_width = 1;
        }
        int arm_wait = 10; //s
-
        int arm_speed = 645;
-        
-       printf("# 3");
-        
-        
-        
+       
         
         int line = 0;
         snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",stair_width);
@@ -780,35 +775,6 @@ bool UMission::missionStairs(int & state)
         snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
         snprintf(lines[line++], MAX_LEN, ": dist=1");
         sendAndActivateSnippet(lines, line);
-        
-        
-        while (bridge->event->isEventSet(1)!=1){}
-      /*
-      for (size_t i = 0; i < n_stairs; i++) {
-        if (i==1) {
-          stair_width = 1;
-        }
-        printf("# for");
-        int line = 0;
-        snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",stair_width);
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
-        snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2:dist=0.07");
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=%i:time=%i", arm_speed, arm_wait);
-        snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt<0.15,dist=0.3");
-        snprintf(lines[line++], MAX_LEN, "vel=-0.2:time=2");
-        snprintf(lines[line++], MAX_LEN, "vel=0, event=2: dist=1");
-        snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
-        snprintf(lines[line++], MAX_LEN, ": dist=1");
-        sendAndActivateSnippet(lines, line);
-        
-        while (bridge->event->isEventSet(1)!=1){}
-      }
-      */
-      printf("# 4");
       
       // make sure event 1 is cleared
       bridge->event->isEventSet(1);
@@ -823,6 +789,7 @@ bool UMission::missionStairs(int & state)
       }
     case 11:
       {
+        printf("# i= 1\n", i);
       int n_stairs = 5;
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
