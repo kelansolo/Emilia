@@ -752,7 +752,8 @@ bool UMission::missionStairs(int & state)
     case 0:
       {
        printf("# 2");
-       
+       int line = 0;
+        
        if (i==0) {
           snprintf(lines[line++], MAX_LEN,"servo=3, pservo=900, vservo=0 :time=0.3");
           snprintf(lines[line++], MAX_LEN,"vel=0.3, edgel=1: ir2<0.6");
@@ -767,8 +768,6 @@ bool UMission::missionStairs(int & state)
        int arm_speed = 645;
         
        bridge->event->isEventSet(1);
-        
-        int line = 0;
         
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
@@ -795,7 +794,6 @@ bool UMission::missionStairs(int & state)
     case 11:
       {
         printf("# i=%d \n", i);
-      int n_stairs = 5;
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
