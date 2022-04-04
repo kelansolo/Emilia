@@ -752,18 +752,24 @@ bool UMission::missionStairs(int & state)
     case 0:
       {
        printf("# 2");
-       float stair_width = 2; // cm 
-       if (i==1) {
-          stair_width = 1;
+       
+       if (i==0) {
+          snprintf(lines[line++], MAX_LEN,"servo=3, pservo=900, vservo=0 :time=0.3");
+          snprintf(lines[line++], MAX_LEN,"vel=0.3, edgel=1: ir2<0.6");
+          snprintf(lines[line++], MAX_LEN,"vel=0.2, edgel=0: dist=0.2");
        }
+        else{
+          snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",0.18);
+          snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
+        }
+        
        int arm_wait = 10; //s
        int arm_speed = 645;
         
        bridge->event->isEventSet(1);
         
         int line = 0;
-        snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= %2.2f",stair_width);
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
+        
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
         snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
@@ -772,9 +778,7 @@ bool UMission::missionStairs(int & state)
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=%i:time=%i", arm_speed, arm_wait);
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt<0.15,dist=0.3");
         snprintf(lines[line++], MAX_LEN, "vel=-0.2:time=2");
-        snprintf(lines[line++], MAX_LEN, "vel=0, event=2: dist=1");
-        snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
-        snprintf(lines[line++], MAX_LEN, ": dist=1");
+        snprintf(lines[line++], MAX_LEN, "event=1, vel=0:time =0.3");
         sendAndActivateSnippet(lines, line);
       
       // make sure event 1 is cleared
