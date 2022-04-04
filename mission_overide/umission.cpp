@@ -758,7 +758,8 @@ bool UMission::missionStairs(int & state)
          printf("# if i=%d \n", i);
           snprintf(lines[line++], MAX_LEN,"servo=3, pservo=900, vservo=0");
           snprintf(lines[line++], MAX_LEN,"vel=0.4, edgel=1: ir2<0.6");
-          snprintf(lines[line++], MAX_LEN,"vel=0.2, edgel=0: dist=0.2");
+          snprintf(lines[line++], MAX_LEN,"vel=0.2, edgel=0: dist=0.15");
+         snprintf(lines[line++], MAX_LEN,"vel=0: time=1");
        }
         else{
           printf("# ifelse i=%d \n", i);
