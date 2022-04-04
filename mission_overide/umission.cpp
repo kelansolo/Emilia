@@ -774,7 +774,8 @@ bool UMission::missionStairs(int & state)
         snprintf(lines[line++], MAX_LEN,"servo=3, pservo=900, vservo=0");
         snprintf(lines[line++], MAX_LEN,"vel=0.4, edgel=1: ir2<0.6");
         snprintf(lines[line++], MAX_LEN,"vel=0.2, edgel=0: dist=0.2");
-        
+        snprintf(lines[line++], MAX_LEN,"vel=0.0,: time=1");
+
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-800, vservo=%i :time=%i",arm_speed,arm_wait);
         snprintf(lines[line++], MAX_LEN, "vel=0.2:tilt>0.1");
         snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
