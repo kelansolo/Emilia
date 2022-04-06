@@ -19,7 +19,8 @@
  ***************************************************************************/
 
 
-
+#include <lccv.hpp>
+#include <opencv2/opencv.hpp>
 #include <sys/time.h>
 #include <cstdlib>
 
@@ -675,8 +676,26 @@ bool UMission::Garage(int& state)
 
 bool UMission::missionCamera(int & state){
 
-    bool finished = false;
-    bool is_sent = true;
+    //bool finished = false;
+    //bool is_sent = true;
+    cv::Mat image;
+    lccv::PiCamera cam;
+    //cam.options->width=4056;
+    //cam.options->height=3040;
+    cam.options->photo_width=2028;
+    cam.options->photo_height=1520;
+    cam.options->verbose=true;
+    cv::namedWindow("Image",cv::WINDOW_NORMAL);
+    for(int i=0;i<100;i++){
+        std::cout<<i<<std::endl;
+        if(!cam.capturePhoto(image)){
+            std::cout<<"Camera error"<<std::endl;
+        }
+        cv::imshow("Image",image);
+        cv::waitKey(30);
+    }
+    cv::waitKey();
+    cv::destroyWindow("Image");
 
     //int dir = cam->updateCameraDir();
     system("libcamera-still -o cur.jpeg"); // gets picture from terminal (cur.jpeg is the current picture taken)
