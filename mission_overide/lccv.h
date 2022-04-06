@@ -1,3 +1,6 @@
+#ifndef LCCV_H
+#define LCCV_H
+
 #include <mutex>
 #include <atomic>
 #include <pthread.h>
