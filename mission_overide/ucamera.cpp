@@ -59,7 +59,7 @@ typedef enum{
 } dir_t;
 
  
-
+/*
 void UCamera::initCamera(){
 
     cv::VideoCapture cap(0); //capture the video from web cam
@@ -76,7 +76,7 @@ void UCamera::initCamera(){
 
 }
 
- 
+ */
 
 int UCamera::updateCameraDir(){
 
@@ -140,7 +140,8 @@ int UCamera::updateCameraDir(){
     {
         //cv::Mat imgOriginal;
 
-        /*bool bSuccess = cap.read(imgOriginal); // read a new frame from video
+        /*
+        bool bSuccess = cap.read(imgOriginal); // read a new frame from video
 
 
 
