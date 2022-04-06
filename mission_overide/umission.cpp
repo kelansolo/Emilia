@@ -286,11 +286,15 @@ void UMission::runMission()
               
           case 5:
             ended = missionCamera(missionState);
-            break;*/
+            break;
            
           case 1:
             ended = missionStairs(missionState);
+            break;*/
+            case 1:
+            ended = missionCamera(missionState);
             break;
+           
               
           default:
             printf("# default");
