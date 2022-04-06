@@ -12,7 +12,9 @@ project(robobot)
 # endif()
 find_package(PkgConfig REQUIRED)
 find_package(OpenCV REQUIRED )
-find_package(Threads REQUIRED)pkg_check_modules(LIBCAMERA REQUIRED libcamera)
+find_package(Threads REQUIRED)
+
+pkg_check_modules(LIBCAMERA REQUIRED libcamera)
 
 include_directories(include ${LIBCAMERA_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -std=c++11 ${EXTRA_CC_FLAGS} -Wno-psabi")
