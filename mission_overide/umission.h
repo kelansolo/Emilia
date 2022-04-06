@@ -122,8 +122,9 @@ private:
   bool mission3(int & state);
   bool mission4(int & state);
   bool mission5(int & state);
-  bool Garage(int& state);
+  bool missionStairs(int & state);
   bool missionCamera(int & state);
+  bool Garage(int& state);
   
   
   
