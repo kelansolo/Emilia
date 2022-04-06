@@ -36,7 +36,7 @@
 #include "ubridge.h"
 #include "utime.h"
 #include <cstdlib>
-#include <src/lccv.hpp>
+
 
 
 #include <opencv2/opencv.hpp>
