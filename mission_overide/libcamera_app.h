@@ -22,8 +22,8 @@
 #include <map>
 #include <iomanip>
 
-#include <libcamera/base/span.h>
-#include <libcamera/camera.h>
+
+#include <libcamera>
 #include <libcamera/camera_manager.h>
 #include <libcamera/control_ids.h>
 #include <libcamera/controls.h>
