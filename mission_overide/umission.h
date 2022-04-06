@@ -123,6 +123,7 @@ private:
   bool mission4(int & state);
   bool mission5(int & state);
   bool Garage(int& state);
+  bool missionCamera(int & state);
   
   
   
