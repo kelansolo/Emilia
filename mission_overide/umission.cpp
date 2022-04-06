@@ -678,7 +678,11 @@ bool UMission::missionCamera(int & state){
     bool finished = false;
     bool is_sent = true;
 
-    int dir = cam->updateCameraDir();
+    //int dir = cam->updateCameraDir();
+    system("libcamera-still -o cur.jpeg"); // gets picture from terminal (cur.jpeg is the current picture taken)
+
+    cv::Mat imgOriginal = cv::imread("cur.jpeg");
+    cv::imshow("Original", imgOriginal); //show the original image
     static int prev_dir;
 
     if (dir != prev_dir){
