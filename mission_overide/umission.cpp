@@ -684,7 +684,7 @@ bool UMission::missionCamera(int & state){
     cv::Mat imgOriginal = cv::imread("cur.jpeg");
     cv::imshow("Original", imgOriginal); //show the original image
     static int prev_dir;
-
+  /*
     if (dir != prev_dir){
       is_sent = false;
       prev_dir = dir;
@@ -708,6 +708,7 @@ bool UMission::missionCamera(int & state){
           is_sent = true;
         }
     }
+    */
     return finished;
 }
 
