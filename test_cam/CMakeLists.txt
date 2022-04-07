@@ -56,9 +56,9 @@ include_directories(include ${LIBCAMERA_INCLUDE_DIRS} ${OPENCV_INCLUDE_DIRS})
 include(GNUInstallDirs)
 
 set(SOURCES
-    lccv.cpp
-    libcamera_app.cpp
-    libcamera_app_options.cpp
+    src/lccv.cpp
+    src/libcamera_app.cpp
+    src/libcamera_app_options.cpp
 )
 set(HEADERS
     include/lccv.h
@@ -78,5 +78,3 @@ install(TARGETS liblccv
 install(
     FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
-add_executable(takephoto takephoto.cpp)
-target_link_libraries(takephoto -llccv ${OpenCV_LIBS})
