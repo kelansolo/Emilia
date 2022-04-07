@@ -1,4 +1,4 @@
-
+#pragma once
 #include <opencv2/opencv.hpp>
 #include <mutex>
 #include <atomic>
@@ -6,7 +6,7 @@
 
 
 
-#pragma once
+
 
 #include <sys/mman.h>
 
