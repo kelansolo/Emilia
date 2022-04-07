@@ -78,3 +78,5 @@ install(TARGETS liblccv
 install(
     FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
+add_executable(takephoto takephoto.cpp)
+target_link_libraries(takephoto -llccv ${OpenCV_LIBS})
