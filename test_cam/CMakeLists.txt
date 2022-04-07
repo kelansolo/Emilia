@@ -60,7 +60,7 @@ set(SOURCES
     src/libcamera_app.cpp
     src/libcamera_app_options.cpp
 )
-set(HEADERS
+set(HEADERS 
     include/lccv.h
     include/libcamera_app.h
     include/libcamera_app_options.h
