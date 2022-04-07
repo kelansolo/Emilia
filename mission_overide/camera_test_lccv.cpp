@@ -3,7 +3,7 @@
 #include <mutex>
 #include <atomic>
 #include <pthread.h>
-#include <opencv2/opencv.hpp>
+
 
 
 #pragma once
@@ -13,7 +13,7 @@
 #include <condition_variable>
 #include <iostream>
 #include <memory>
-#include <mutex>
+
 #include <queue>
 #include <set>
 #include <string>
@@ -31,17 +31,9 @@
 #include <libcamera/formats.h>
 #include <libcamera/framebuffer_allocator.h>
 #include <libcamera/property_ids.h>
-/* SPDX-License-Identifier: BSD-2-Clause */
-/*
- * Copyright (C) 2020, Raspberry Pi (Trading) Ltd.
- *
- * options.hpp - common program options
- */
 
-#pragma once
 
 #include <fstream>
-#include <iostream>
 
 #include <libcamera/camera.h>
 #include <libcamera/camera_manager.h>
