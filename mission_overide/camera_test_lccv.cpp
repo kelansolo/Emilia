@@ -40,7 +40,7 @@
 #include <libcamera/control_ids.h>
 #include <libcamera/property_ids.h>
 #include <libcamera/transform.h>
-using namespace std;
+
 
 enum Exposure_Modes {
     EXPOSURE_NORMAL = libcamera::controls::ExposureNormal,
