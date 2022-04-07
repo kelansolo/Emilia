@@ -61,9 +61,9 @@ set(SOURCES
     src/libcamera_app_options.cpp
 )
 set(HEADERS 
-    include/lccv.h
-    include/libcamera_app.h
-    include/libcamera_app_options.h
+    include/lccv.hpp
+    include/libcamera_app.hpp
+    include/libcamera_app_options.hpp
 )
 
 add_library(liblccv ${SOURCES} ${HEADERS})
