@@ -337,8 +337,8 @@ UCamera::UCamera(UBridge * reg)
   th1stop = false;
   saveImage = false;
   bridge = reg;
-  arUcos = new ArUcoVals(this);
-  cameraOpen = setupCamera();
+  //arUcos = new ArUcoVals(this);
+ // cameraOpen = setupCamera();
   // initialize coordinate conversion
   //makeCamToRobotTransformation();
 //   if (cameraOpen)
