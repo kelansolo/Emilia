@@ -554,8 +554,8 @@ bool UMission::mission2(int & state)
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
       { // finished first drive
-
-
+        int line = 0;
+        
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=-175");
         snprintf(lines[line++], MAX_LEN, "vel=0.2,edger=0:tilt>0.01");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
