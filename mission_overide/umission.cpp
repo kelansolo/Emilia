@@ -454,14 +454,6 @@ bool UMission::mission1(int & state)
   return finished;
 }
 
-thread=1
-     servo=3, pservo=-120, vservo=0: time = 0.5
-     vel=0.2, edger = 0 : ir2<0.1
-     servo=3, pservo=50, vservo=0: time = 0.5
-     vel=0.2 : dist=0.10
-    servo=3, pservo=-120, vservo=0: time = 0.5
-vel=0.4,  edgel = 0 : dist=0.5
-
 bool UMission::mission2(int & state)
 {
   bool finished = false;
