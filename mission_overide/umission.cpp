@@ -414,6 +414,8 @@ bool UMission::mission1(int & state)
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=800, vservo=0:time=0.3");
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.15: turn=90.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.3, edger=0.0: dist=0.3");
+
+
       snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
       sendAndActivateSnippet(lines, line);
 
@@ -453,6 +455,7 @@ bool UMission::mission1(int & state)
   }
   return finished;
 }
+
 
 bool UMission::mission2(int & state)
 {
@@ -502,6 +505,43 @@ bool UMission::mission2(int & state)
       break;
       }
     case 11:
+      {
+      // wait for event 1 (send when finished driving first part)
+      if (bridge->event->isEventSet(1))
+      { // finished first drive
+        int line = 0;
+
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.3");
+        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-300, vservo=0: time = 0.5");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.2");
+        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-150, vservo=0: time = 0.5");
+        snprintf(lines[line++], MAX_LEN, "vel=0.4 : lv<15");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.07");
+        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
+        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=30");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.01");
+        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
+        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.10 : turn=-30");
+
+        snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
+        snprintf(lines[line++], MAX_LEN, ": dist=1");
+        sendAndActivateSnippet(lines, line);
+
+        // make sure event 1 is cleared
+        bridge->event->isEventSet(1);
+        // tell the operator
+        printf("# case=%d sent mission snippet 2\n", state);
+
+        bridge->send("oled 5 code snippet 2");
+
+        state = 12
+        featureCnt = 0;
+      }
+      break;
+      }
+    case 12:
       {
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
