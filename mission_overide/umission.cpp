@@ -266,19 +266,22 @@ void UMission::runMission()
           bridge->send("oled 3 running AUTO\n");
         }
         switch(mission)
-        {/*
+        {
           case 1: // running auto mission
             ended = mission1(missionState);
-            break;*/
-          case 1:
+            break;
+          case 2:
             ended = mission2(missionState);
-            break;/*
+            break;
+          case 3:
+            ended = missionStairs(missionState);
+            break;
           case 3:
             ended = mission3(missionState);
             break;
           case 4:
             ended = mission4(missionState);
-            break;
+            break;/*
 
            case 1:
               ended = Garage(missionState);
@@ -288,9 +291,7 @@ void UMission::runMission()
             ended = missionCamera(missionState);
             break;*/
 
-          case 2:
-            ended = missionStairs(missionState);
-            break;
+          
 
           default:
             printf("# default");
@@ -513,7 +514,7 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.2");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-300, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.25");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.3");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-150, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.4 : lv<15");
@@ -593,6 +594,7 @@ bool UMission::mission2(int & state)
         int line = 0;
         
         snprintf(lines[line++], MAX_LEN, "vel=-0.3: lv>10");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-170");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=0 : dist = 1");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-180");
@@ -904,18 +906,15 @@ bool UMission::missionStairs(int & state)
     }
     case 1:
       {
-       printf("# 2");
        int line = 0;
 
        if (i==0) {
-         printf("# if i=%d \n", i);
           snprintf(lines[line++], MAX_LEN,"servo=3, pservo=900, vservo=0");
           snprintf(lines[line++], MAX_LEN,"vel=0.4, edgel=1: ir2<0.6");
           snprintf(lines[line++], MAX_LEN,"vel=0.2, edgel=0: dist=0.15");
          snprintf(lines[line++], MAX_LEN,"vel=0: time=1");
        }
         else{
-          printf("# ifelse i=%d \n", i);
           snprintf(lines[line++], MAX_LEN, "edgel=0,vel= 0.2 white=1: dist= 0.18");
           snprintf(lines[line++], MAX_LEN, "vel=0:time=1");
         }
