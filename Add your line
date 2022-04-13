@@ -4,12 +4,9 @@ We only have one version for everyone so be very careful not to modify someone e
 
 
 - in mission_overide on github add your lines, and save the file
-- get into Emilia, then directory Emilia
-- write "git pull" in the terminal (it should update the files)
-- then go into mission_overide in the directory Emilia and write the following commands:
+- get into Emilia/mission_overide/build
+- write the following commands:
 %-------------
-  mkdir -p build
-  cd build
   cmake ..
   make -j3
 %-------------
