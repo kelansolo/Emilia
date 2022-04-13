@@ -276,10 +276,10 @@ void UMission::runMission()
           case 3:
             ended = missionStairs(missionState);
             break;
-          case 3:
+          case 4:
             ended = mission3(missionState);
             break;
-          case 4:
+          case 5:
             ended = mission4(missionState);
             break;/*
 
