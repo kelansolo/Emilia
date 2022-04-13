@@ -286,11 +286,11 @@ void UMission::runMission()
 
           case 5:
             ended = missionCamera(missionState);
-            break;
-
-          case 1:
-            ended = missionStairs(missionState);
             break;*/
+
+          case 2:
+            ended = missionStairs(missionState);
+            break;
 
           default:
             printf("# default");
@@ -597,10 +597,10 @@ bool UMission::mission2(int & state)
       { // finished first drive
         int line = 0;
         
+        snprintf(lines[line++], MAX_LEN, "vel=-0.3: lv>10");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-140");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=0 : dist = 1");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-180");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=0: dist = 0.5");
         sendAndActivateSnippet(lines, line);
 
         // make sure event 1 is cleared
