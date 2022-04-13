@@ -482,9 +482,9 @@ bool UMission::mission2(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=0.3: dist=0.2");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: lv>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-100.0");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-70, vservo=0: time = 0.5");
+      //snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-70, vservo=0: time = 0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.4: dist=0.5");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
+      //snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
 
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger=0.0: ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
@@ -590,7 +590,32 @@ bool UMission::mission2(int & state)
       }
       break;
       }
-    case 13:
+      case 13:
+      {
+      // wait for event 1 (send when finished driving first part)
+      if (bridge->event->isEventSet(1))
+      { // finished first drive
+        int line = 0;
+        
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-140");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=0 : dist = 1");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-180");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=0: dist = 0.5");
+        sendAndActivateSnippet(lines, line);
+
+        // make sure event 1 is cleared
+        bridge->event->isEventSet(1);
+        // tell the operator
+        printf("# case=%d sent mission snippet 2\n", state);
+
+        bridge->send("oled 5 code snippet 2");
+
+        featureCnt = 0;
+        state = 14;
+      }
+      break;
+      }
+    case 14:
       {
       // wait for event 1 (send when finished driving first part)
       if (bridge->event->isEventSet(1))
