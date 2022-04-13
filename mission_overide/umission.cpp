@@ -281,18 +281,14 @@ void UMission::runMission()
             break;
           case 5:
             ended = mission4(missionState);
-            break;/*
-
-           case 1:
-              ended = Garage(missionState);
-              break;
-
-          case 5:
-            ended = missionCamera(missionState);
-            break;*/
-
-          
-
+            break;
+            
+            // CASE 6 TO DO
+          case 6:
+            ended = mission5(missionState);
+            break;
+            
+            
           default:
             printf("# default");
             // no more missions - end everything
@@ -414,7 +410,14 @@ bool UMission::mission1(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist=0.6");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=800, vservo=0:time=0.3");
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.15: turn=90.0");
-      snprintf(lines[line++], MAX_LEN, "vel=0.3, edger=0.0: dist=0.3");
+      snprintf(lines[line++], MAX_LEN, "vel=0.3, edger=0.0: dist=0.3"); // begining of the
+        
+        /**************************************
+        * Name: Begining
+        * Start: Start
+        * Stop: begining of see-saw
+        * Status: 10/10
+        ****************************************/
 
 
       snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
@@ -477,18 +480,23 @@ bool UMission::mission2(int & state)
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
 
       snprintf(lines[line++], MAX_LEN, "vel=0.2, edger=0.0: ir1<0.5");
-      snprintf(lines[line++], MAX_LEN, "vel=0.5: dist=0.4");
+      snprintf(lines[line++], MAX_LEN, "vel=0.5: dist=0.3"); // maybe to check (end of see-saw)
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-65.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: lv>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: dist=0.2");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: lv>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-100.0");
-      //snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-70, vservo=0: time = 0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.4: dist=0.5");
-      //snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
 
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger=0.0: ir1<0.5");
-      //snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
+        
+        /**************************************
+        * Name: See-saw
+        * Start: Begining of see-saw
+        * Stop: Gate top of steep slope
+        * Status: 8/10
+        * Issues: Goes too far after see-saw (hits wall), doesn't find 2nd W line!
+        ****************************************/
 
       snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
       sendAndActivateSnippet(lines, line);
@@ -523,11 +531,19 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=30");
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.01");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.10 : turn=-30");
+        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.10 : turn=-30"); // ball in hole
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-70.0");
         snprintf(lines[line++], MAX_LEN, "vel=0.3:lv>10");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=300, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 1.3");
+        
+        /**************************************
+        * Name: 1st ball
+        * Start: Gate top of steep slope
+        * Stop: Top of shallow slope
+        * Status: 10/10
+        * Issues:
+        ****************************************/
 
         snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
         sendAndActivateSnippet(lines, line);
@@ -564,13 +580,22 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=-150");
         snprintf(lines[line++], MAX_LEN, "vel=0.2: lv>10");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.05: turn= 90");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0: dist=0.3");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0: dist=0.3"); // probleme?
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : lv<10");
         snprintf(lines[line++], MAX_LEN, "vel=0.3:dist=0.15");
         snprintf(lines[line++], MAX_LEN, "vel=0:time=0.3");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=-30");
         snprintf(lines[line++], MAX_LEN, "vel=0.3:dist=0.01");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=30");
+        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=30"); // ball in hole
+        
+        /**************************************
+        * Name: 2nd ball
+        * Start: Top of shallow slope
+        * Stop: Hole
+        * Status: 10/10
+        * Issues:
+        ****************************************/
+        
         snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
         sendAndActivateSnippet(lines, line);
 
@@ -598,6 +623,15 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-180");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=0 : dist = 1");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-180");
+        
+        /**************************************
+        * Name: Hole2Stairs
+        * Start: Hole
+        * Stop: Top of shallow slope
+        * Status: 5/10
+        * Issues: doesn't find the line (TODO)
+        ****************************************/
+        
         snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
         sendAndActivateSnippet(lines, line);
 
@@ -656,6 +690,14 @@ bool UMission::mission3(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=0.4 : ir1<1");
       snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0: turn=90.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.4: lv>15");
+        
+      /**************************************
+      * Name: Square
+      * Start: End of stairs
+      * Stop: Race side of the square
+      * Status: 8/10
+      * Issues: Hits garage or tree
+      ****************************************/
 
       snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
       snprintf(lines[line++], MAX_LEN, ": dist=1");
@@ -727,6 +769,14 @@ bool UMission::mission4(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=1.5 , edgel = 0 : ir1<0.3");
       snprintf(lines[line++], MAX_LEN, "vel=1.5, edgel = 0 : dist = 0.5");
       snprintf(lines[line++], MAX_LEN, "vel=1.5, edgel = 0 : ir1<0.3");
+        
+     /**************************************
+      * Name: Race
+      * Start: Race side of the square
+      * Stop: Race's end
+      * Status: 9/10
+      * Issues: Hits black panel
+      ****************************************/
 
       snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
       snprintf(lines[line++], MAX_LEN, ": dist=1");
@@ -737,6 +787,63 @@ bool UMission::mission4(int & state)
       state = 11;
       featureCnt = 0;
       break;
+      }
+    case 11:
+      {
+      // wait for event 1 (send when finished driving first part)
+      if (bridge->event->isEventSet(1))
+      { // finished first drive
+        state = 999;
+      }
+        break;
+      }
+    case 999:
+    default:
+      printf("mission 4 ended\n");
+      bridge->send("oled 5 mission 4 ended.");
+      finished = true;
+      break;
+  }
+  return finished;
+}
+
+bool UMission::mission5(int & state)
+{
+  bool finished = false;
+  printf("# case=%d \n", state);
+  switch (state)
+  {
+     case 0:
+      {
+      // make sure event 1 is cleared
+      bridge->event->isEventSet(1);
+        
+      int line = 0;
+        /*
+      snprintf(lines[line++], MAX_LEN, "INPUT YOUR COMMAND");// COPY PASTE THIS LINE AS MANY TIME AS YOU NEED (MAX 20)
+      */
+        
+     /**************************************
+      * Name: 
+      * Start: Race's end
+      * Stop: Track's end
+      * Status: ???/10
+      * Issues: 
+      ****************************************/
+
+      //LEAVE THESE 3 LINES
+      snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
+      snprintf(lines[line++], MAX_LEN, ": dist=1");
+      sendAndActivateSnippet(lines, line);
+
+      bridge->send("oled 5 code snippet 1");
+
+      state = 11;
+      featureCnt = 0;
+      break;
+        
+        //IF MORE THAN 20 LINES NEEDED, CREATE A NEW CASE
+        
       }
     case 11:
       {
@@ -957,6 +1064,15 @@ bool UMission::missionStairs(int & state)
         i++;
         if(i==5){
           printf("# FIN");
+          
+        /**************************************
+        * Name: Stairs
+        * Start: Top of shallow slope
+        * Stop: End of stairs
+        * Status: 9/10
+        * Issues: maybe change to forward to avoid control
+        ****************************************/
+          
           state= 999;
         }
         else
