@@ -266,14 +266,14 @@ void UMission::runMission()
           bridge->send("oled 3 running AUTO\n");
         }
         switch(mission)
-        {
+        {/*
           case 1: // running auto mission
             ended = mission1(missionState);
-            break;
-          case 2:
+            break;*/
+          case 1:
             ended = mission2(missionState);
-            break;
-          case 3:/*
+            break;/*
+          case 3:
             ended = mission3(missionState);
             break;
           case 4:
@@ -474,7 +474,7 @@ bool UMission::mission2(int & state)
 
       snprintf(lines[line++], MAX_LEN, "vel=0.2, edger=0.0: ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.5: dist=0.4");
-      snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-80.0");
+      snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-70.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: xl>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: dist=0.3");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: xl>15");
