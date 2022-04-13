@@ -536,7 +536,7 @@ bool UMission::mission2(int & state)
 
         bridge->send("oled 5 code snippet 2");
 
-        state = 12
+        state = 12;
         featureCnt = 0;
       }
       break;
