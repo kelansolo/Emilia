@@ -787,7 +787,7 @@ bool UMission::missionStairs(int & state)
   {
     case 0:
       {
-      int i = 0;
+      i = 0;
       state =1;
        break;
     }
