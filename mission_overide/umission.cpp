@@ -513,7 +513,7 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.2");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-300, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.15");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.25");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-150, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.4 : lv<15");
@@ -565,7 +565,7 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.05: turn= 90");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0: dist=0.3");
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : lv<10");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3:dist=0.10");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3:dist=0.15");
         snprintf(lines[line++], MAX_LEN, "vel=0:time=0.3");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=-30");
         snprintf(lines[line++], MAX_LEN, "vel=0.3:dist=0.01");
@@ -576,9 +576,9 @@ bool UMission::mission2(int & state)
         // make sure event 1 is cleared
         bridge->event->isEventSet(1);
         // tell the operator
-        printf("# case=%d sent mission snippet 2\n", state);
+        printf("# case=%d sent mission snippet 3\n", state);
 
-        bridge->send("oled 5 code snippet 2");
+        bridge->send("oled 5 code snippet 3");
 
         featureCnt = 0;
         state = 13;
@@ -596,14 +596,15 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-170");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=0 : dist = 1");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-180");
+        snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
         sendAndActivateSnippet(lines, line);
 
         // make sure event 1 is cleared
         bridge->event->isEventSet(1);
         // tell the operator
-        printf("# case=%d sent mission snippet 2\n", state);
+        printf("# case=%d sent mission snippet 4\n", state);
 
-        bridge->send("oled 5 code snippet 2");
+        bridge->send("oled 5 code snippet 4");
 
         featureCnt = 0;
         state = 14;
