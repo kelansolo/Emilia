@@ -483,8 +483,9 @@ bool UMission::mission2(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=0.3: lv>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-100.0");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-70, vservo=0: time = 0.5");
-      snprintf(lines[line++], MAX_LEN, "vel=0.4, edger=0.0: dist=1");
+      snprintf(lines[line++], MAX_LEN, "vel=0.4: dist=1");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
+      
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger=0.0: ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
         /*
@@ -493,8 +494,7 @@ bool UMission::mission2(int & state)
       snprintf(lines[line++], MAX_LEN, "vel=0.3: lv>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=1.0: lv<5");*/
 
-      snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
-      snprintf(lines[line++], MAX_LEN, ": dist=1");
+      snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
       sendAndActivateSnippet(lines, line);
 
       // make sure event 1 is cleared
@@ -529,8 +529,7 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.10 : turn=-30");
 
-        snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
-        snprintf(lines[line++], MAX_LEN, ": dist=1");
+        snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
         sendAndActivateSnippet(lines, line);
 
         // make sure event 1 is cleared
