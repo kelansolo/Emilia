@@ -266,11 +266,11 @@ void UMission::runMission()
           bridge->send("oled 3 running AUTO\n");
         }
         switch(mission)
-        {
+        {/*
           case 1: // running auto mission
             ended = mission1(missionState);
-            break;
-          case 2:
+            break;*/
+          case 1:
             ended = mission2(missionState);
             break;
           case 3:
