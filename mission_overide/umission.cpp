@@ -527,7 +527,7 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.4 : lv<15");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.07");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.06");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=30");
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.01");
