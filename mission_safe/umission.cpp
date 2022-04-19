@@ -474,7 +474,7 @@ bool UMission::mission2(int & state)
       int line = 0;
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
       
-      snprintf(lines[line++], MAX_LEN, "vel=0.4, edger=0.0: ir1<0.5");
+      snprintf(lines[line++], MAX_LEN, "vel=0.2, edger=0.0: ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.5: dist=0.35"); // maybe to check (end of see-saw)
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-65.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: lv>15");
