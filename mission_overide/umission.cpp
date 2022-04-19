@@ -520,13 +520,13 @@ bool UMission::mission2(int & state)
       { // finished first drive
         int line = 0;
 
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.2");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.25");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-400, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.3");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist=0.3");
+        snprintf(lines[line++], MAX_LEN, "vel=0.4 : dist=0.4");
         //snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.06");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=40");
