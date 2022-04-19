@@ -514,6 +514,7 @@ bool UMission::mission2(int & state)
         int line = 0;
 
         snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist = 1.7");
+	snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=-180");
         
         /**************************************
         * Name: 1st ball
@@ -546,7 +547,7 @@ bool UMission::mission2(int & state)
       { // finished first drive
         int line = 0;
         
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=-180");
+        
         
         /**************************************
         * Name: 2nd ball
