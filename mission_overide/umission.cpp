@@ -266,7 +266,7 @@ void UMission::runMission()
           bridge->send("oled 3 running AUTO\n");
         }
         switch(mission)
-        {/*
+        {
           case 1: // running auto mission
             ended = mission1(missionState);
             break;
@@ -281,12 +281,13 @@ void UMission::runMission()
             break;
           case 5:
             ended = mission4(missionState);
-            break;*/
+            break;
             
             // CASE 6 TO DO
+			/*
           case 1:
             ended = mission5(missionState);
-            break;
+            break;*/
             
             
           default:
