@@ -270,7 +270,7 @@ void UMission::runMission()
           case 1: // running auto mission
             ended = mission1(missionState);
             break;*/
-          case 2:
+          case 1:
             ended = mission2(missionState);
             break;/*
           case 3:
