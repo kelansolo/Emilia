@@ -473,23 +473,14 @@ bool UMission::mission2(int & state)
       {
       int line = 0;
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-200, vservo=0: time = 0.5");
-      snprintf(lines[line++], MAX_LEN, "vel=0.2, edger = 0 : ir2<0.1,dist = 0.8");
-      snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=50, vservo=0: time = 0.5");
-      snprintf(lines[line++], MAX_LEN, "vel=0.2 : dist=0.1");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-200, vservo=0: time = 0.5");
-
-      snprintf(lines[line++], MAX_LEN, "vel=0.2, edger=0.0: ir1<0.5");
+      
+      snprintf(lines[line++], MAX_LEN, "vel=0.4, edger=0.0: ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.5: dist=0.35"); // maybe to check (end of see-saw)
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-65.0");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: lv>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: dist=0.2");
       snprintf(lines[line++], MAX_LEN, "vel=0.3: lv>15");
       snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-110.0");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-150, vservo=0: time = 0.5");
-	snprintf(lines[line++], MAX_LEN, "vel=0.4, edger=0.0: dist=0.3");
-      snprintf(lines[line++], MAX_LEN, "vel=0.4: dist=0.4");
 
       snprintf(lines[line++], MAX_LEN, "vel=0.4, edger=0.0: ir1<0.5");
         
@@ -522,23 +513,7 @@ bool UMission::mission2(int & state)
       { // finished first drive
         int line = 0;
 
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.25");
-        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-400, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.3");
-        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-200, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.4 : dist=0.4");
-        //snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.06");
-        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=40");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.01");
-        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.10 : turn=-40"); // ball in hole
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-90.0");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3:lv>10");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=300, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 1.3");
+        snprintf(lines[line++], MAX_LEN, "vel=0.4, edger = 0 : dist = 1.7");
         
         /**************************************
         * Name: 1st ball
@@ -571,26 +546,7 @@ bool UMission::mission2(int & state)
       { // finished first drive
         int line = 0;
         
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=-175");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2,edger=0:dist=0.30,tilt=0.1");
-        snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-200, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.15: turn= 70 , ir2<0.1");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=200, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2: dist = 0.08");
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=0.2");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-200, vservo=0: time = 0.5");
-	      
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=-150");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2: lv>10");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.05: turn= 90");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0: dist=0.3"); // probleme?
-        snprintf(lines[line++], MAX_LEN, "vel=0.3 : lv<10");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3:dist=0.15");
-        snprintf(lines[line++], MAX_LEN, "vel=0:time=0.3");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=-30");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3:dist=0.01");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=30"); // ball in hole
+        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=-180");
         
         /**************************************
         * Name: 2nd ball
@@ -611,46 +567,11 @@ bool UMission::mission2(int & state)
         bridge->send("oled 5 code snippet 3");
 
         featureCnt = 0;
-        state = 13;
-      }
-      break;
-      }
-      case 13:
-      {
-      // wait for event 1 (send when finished driving first part)
-      if (bridge->event->isEventSet(1))
-      { // finished first drive
-        int line = 0;
-        
-        snprintf(lines[line++], MAX_LEN, "vel=-0.3: lv>10");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=500, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-180");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, edgel=0 : dist = 1");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0: turn=-180");
-        
-        /**************************************
-        * Name: Hole2Stairs
-        * Start: Hole
-        * Stop: Top of shallow slope
-        * Status: 5/10
-        * Issues: doesn't find the line (TODO)
-        ****************************************/
-        
-        snprintf(lines[line++], MAX_LEN, "event=1, vel=0: dist=1");
-        sendAndActivateSnippet(lines, line);
-
-        // make sure event 1 is cleared
-        bridge->event->isEventSet(1);
-        // tell the operator
-        printf("# case=%d sent mission snippet 4\n", state);
-
-        bridge->send("oled 5 code snippet 4");
-
-        featureCnt = 0;
         state = 14;
       }
       break;
       }
+      
     case 14:
       {
       // wait for event 1 (send when finished driving first part)
