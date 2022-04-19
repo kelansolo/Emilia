@@ -269,19 +269,19 @@ void UMission::runMission()
         {/*
           case 1: // running auto mission
             ended = mission1(missionState);
-            break;*/
-          case 1:
+            break;
+          case 2:
             ended = mission2(missionState);
-            break;/*
+            break;
           case 3:
             ended = missionStairs(missionState);
-            break;
+            break;*/
           case 4:
             ended = mission3(missionState);
             break;
           case 5:
             ended = mission4(missionState);
-            break;*/
+            break;
             
             // CASE 6 TO DO
 			/*
