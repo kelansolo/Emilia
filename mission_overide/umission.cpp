@@ -473,12 +473,12 @@ bool UMission::mission2(int & state)
       {
       int line = 0;
       //snprintf(lines[1], MAX_LEN, "event=0, vel=0: time=1");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-160, vservo=0: time = 0.5");
+      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.2, edger = 0 : ir2<0.1");
       snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
       snprintf(lines[line++], MAX_LEN, "servo=3, pservo=50, vservo=0: time = 0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.2 : dist=0.1");
-      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-140, vservo=0: time = 0.5");
+      snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
 
       snprintf(lines[line++], MAX_LEN, "vel=0.2, edger=0.0: ir1<0.5");
       snprintf(lines[line++], MAX_LEN, "vel=0.5: dist=0.3"); // maybe to check (end of see-saw)
@@ -522,10 +522,10 @@ bool UMission::mission2(int & state)
 
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 0.2");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-300, vservo=0: time = 0.5");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-350, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.3");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.5");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-150, vservo=0: time = 0.5");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.4 : lv<15");
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.07");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
@@ -533,7 +533,7 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : dist = 0.01");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.10 : turn=-30"); // ball in hole
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-70.0");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.0: turn=-90.0");
         snprintf(lines[line++], MAX_LEN, "vel=0.3:lv>10");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=300, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0 : dist = 1.3");
@@ -572,12 +572,12 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=-175");
         snprintf(lines[line++], MAX_LEN, "vel=0.2,edger=0:tilt>0.01");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-130, vservo=0: time = 0.5");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.15: turn= 90 , ir2<0.1");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=200, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.2: dist = 0.05");
         snprintf(lines[line++], MAX_LEN, "vel=0:time=0.2");
-        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-130, vservo=0: time = 0.5");
+        snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=-150");
         snprintf(lines[line++], MAX_LEN, "vel=0.2: lv>10");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.05: turn= 90");
