@@ -570,7 +570,7 @@ bool UMission::mission2(int & state)
         int line = 0;
         
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0 : turn=-175");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2,edger=0:dist=0.35,tilt=0.1");
+        snprintf(lines[line++], MAX_LEN, "vel=0.2,edger=0:dist=0.30,tilt=0.1");
         snprintf(lines[line++], MAX_LEN, "vel=0 : time=0.2");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
         snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0.15: turn= 90 , ir2<0.1");
@@ -578,9 +578,9 @@ bool UMission::mission2(int & state)
         snprintf(lines[line++], MAX_LEN, "vel=0.2: dist = 0.05");
         snprintf(lines[line++], MAX_LEN, "vel=0:time=0.2");
         snprintf(lines[line++], MAX_LEN, "servo=3, pservo=-250, vservo=0: time = 0.5");
-        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=-150");
+        snprintf(lines[line++], MAX_LEN, "vel=0.2, tr=0: turn=-180");
         snprintf(lines[line++], MAX_LEN, "vel=0.2: lv>10");
-        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.05: turn= 85");
+        snprintf(lines[line++], MAX_LEN, "vel=0.3, tr=0.05: turn= 90");
         snprintf(lines[line++], MAX_LEN, "vel=0.3, edger = 0: dist=0.3"); // probleme?
         snprintf(lines[line++], MAX_LEN, "vel=0.3 : lv<10");
         snprintf(lines[line++], MAX_LEN, "vel=0.3:dist=0.15");
