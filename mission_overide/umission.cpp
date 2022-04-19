@@ -822,12 +822,42 @@ bool UMission::mission5(int & state)
         /*
       snprintf(lines[line++], MAX_LEN, "INPUT YOUR COMMAND");// COPY PASTE THIS LINE AS MANY TIME AS YOU NEED (MAX 20)
       */
+	   snprintf(lines[line++], MAX_LEN, "vel=0.4,edgel=0,servo=3, pservo=500, vservo=0:dist=1,lv=0");
+	   snprintf(lines[line++], MAX_LEN, "vel = 0.4, tr=0:turn=180");
+	   snprintf(lines[line++], MAX_LEN, "vel=0.4,edgel=0:ir1<0.3");
+	   snprintf(lines[line++], MAX_LEN, "vel=0.4,edgel=0:dist=1vel=0.4,edgel=0:ir1<0.3");
+	   snprintf(lines[line++], MAX_LEN, "vel=0.4,edgel=0,servo=3, pservo=100, vservo=0:dist=1.35");
+	   snprintf(lines[line++], MAX_LEN, "vel = 0.4, tr=0:turn=90");
+	   snprintf(lines[line++], MAX_LEN, "vel=0:ir2<0.2");//wait for small robot to pass by
+	   snprintf(lines[line++], MAX_LEN, "vel = 0.4, tr=0:turn=180");
+	   snprintf(lines[line++], MAX_LEN, "vel=-0.4:dist=0.3");
+	   snprintf(lines[line++], MAX_LEN, "vel=-0.4:xl=20");
+	   snprintf(lines[line++], MAX_LEN, "vel=-0.4,servo=3, pservo=800, vservo=0:dist=0.6");      
+
+
+	  //You are now in start pos in roundabout
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0.1: turn=180, ir2<0.3");
+	  snprintf(lines[line++], MAX_LEN, "vel=-0.4, tr=0.2, label=1:turn=10");//loop start +position adjusting
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0.85: dist=0.5");//drive through gate
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0.2: ir2<0.4");//look for next gate
+	  snprintf(lines[line++], MAX_LEN, "vel=0.2:ir2<0.1,dist=0.15");//position adjusting
+	  snprintf(lines[line++], MAX_LEN, "goto=1: count=3");//loop end
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0:turn=-50");
+	  //full roundabout done, start to go to finish line
+	  snprintf(lines[line++], MAX_LEN, "vel=0,servo=3, pservo=75, vservo=0:ir2<0.3");//Wait for dagmar again
+	  snprintf(lines[line++], MAX_LEN, "vel=0:time=2");//give dagmar time to flee
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4,servo=3, pservo=500, vservo=0:lv=20");//drive and find white line
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4,tr=0:turn=50");
+	  snprintf(lines[line++], MAX_LEN, "vel=0.2,edger=0:dist=1,ir2<0.2");//find finish line
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4,tr=0:turn=180");
+	  snprintf(lines[line++], MAX_LEN, "vel=-0.4:dist=1");//hit finish line backwards
+	  
         
      /**************************************
-      * Name: 
+      * Name: Into the roundabout
       * Start: Race's end
-      * Stop: Track's end
-      * Status: ???/10
+      * Stop: Inside roundabout
+      * Status: 10/10
       * Issues: 
       ****************************************/
 
@@ -845,6 +875,57 @@ bool UMission::mission5(int & state)
         //IF MORE THAN 20 LINES NEEDED, CREATE A NEW CASE
         
       }
+	  case 2
+	  {
+	  // make sure event 1 is cleared
+      bridge->event->isEventSet(1);
+        
+      int line = 0;
+        /*
+      snprintf(lines[line++], MAX_LEN, "INPUT YOUR COMMAND");// COPY PASTE THIS LINE AS MANY TIME AS YOU NEED (MAX 20)
+      */
+
+	  //You are now in start pos in roundabout
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0.1: turn=180, ir2<0.3");
+	  snprintf(lines[line++], MAX_LEN, "vel=-0.4, tr=0.2, label=1:turn=10");//loop start +position adjusting
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0.85: dist=0.5");//drive through gate
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0.2: ir2<0.4");//look for next gate
+	  snprintf(lines[line++], MAX_LEN, "vel=0.2:ir2<0.1,dist=0.15");//position adjusting
+	  snprintf(lines[line++], MAX_LEN, "goto=1: count=3");//loop end
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4, tr=0:turn=-50");
+	  //full roundabout done, start to go to finish line
+	  snprintf(lines[line++], MAX_LEN, "vel=0,servo=3, pservo=75, vservo=0:ir2<0.3");//Wait for dagmar again
+	  snprintf(lines[line++], MAX_LEN, "vel=0:time=2");//give dagmar time to flee
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4,servo=3, pservo=500, vservo=0:lv=20");//drive and find white line
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4,tr=0:turn=50");
+	  snprintf(lines[line++], MAX_LEN, "vel=0.2,edger=0:dist=1,ir2<0.2");//find finish line
+	  snprintf(lines[line++], MAX_LEN, "vel=0.4,tr=0:turn=180");
+	  snprintf(lines[line++], MAX_LEN, "vel=-0.4:dist=1");//hit finish line backwards
+	  
+        
+     /**************************************
+      * Name: Through Roundabout to End
+      * Start: inside roundabout
+      * Stop: Track's end
+      * Status: 7/10
+      * Issues: Wheel sometimes slips off roundabout when going between gates
+      ****************************************/
+
+      //LEAVE THESE 3 LINES
+      snprintf(lines[line++], MAX_LEN, "event=1, vel=0");
+      snprintf(lines[line++], MAX_LEN, ": dist=1");
+      sendAndActivateSnippet(lines, line);
+
+      bridge->send("oled 5 code snippet 1");
+
+      state = 11;
+      featureCnt = 0;
+      break;
+        
+        //IF MORE THAN 20 LINES NEEDED, CREATE A NEW CASE
+        
+	  
+	  }
     case 11:
       {
       // wait for event 1 (send when finished driving first part)
